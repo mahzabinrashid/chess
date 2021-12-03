@@ -1,3 +1,3 @@
-#include "cell.h"
+#include "square.h"
 
 using namespace std;
