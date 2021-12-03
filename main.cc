@@ -5,5 +5,5 @@
 using namespace std;
 
 int main() {
-    cout << "inqi pinki ponki " << endl;
+    cout << "inqi pinki ponki father had a donkey" << endl;
 }
