@@ -5,6 +5,6 @@
 using namespace std;
 
 int main() {
-    int donkeys = 0;
-    cout << "inqi pinki ponki father had" << donkeys << "donkey" << endl;
+    int donkeys = 1;
+    cout << "inqi pinki ponki father had" << donkeys << "donkey inqi" << endl;
 }
