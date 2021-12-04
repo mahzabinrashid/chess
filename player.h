@@ -18,8 +18,10 @@ class Player {
     bool stalemate = false;
     bool castling = false;
     public:
+    Player(string color);     //constructor
     void get_color();         //gets color
     void set_color(string c); //sets color
+    ~Player();                //destructor
 };
 
 #endif
