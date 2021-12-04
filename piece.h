@@ -1,14 +1,21 @@
 #ifndef PIECE_H
 #define PIECE_H
-#include "square.h"
+#include <iostream>
 #include <string>
-using namespace std;
 
+using namespace std;
 
 class Piece {
     string name;
-    string color;
-    vector<Square> valid_moves;
+    bool white;
+    public:
+    Piece(string name, bool white);
+
+    string get_name();
+    void set_name(string name);
+
+    bool is_white();
+    void set_white(bool white);
 };
 
 #endif
