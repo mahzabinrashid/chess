@@ -10,6 +10,7 @@ class Board;
 using namespace std;
 
 class Piece {
+    // this is an abstract class. change new Piece in board class to new King etc.
     string name;
     bool white;
     public:

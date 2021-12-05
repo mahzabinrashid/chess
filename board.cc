@@ -22,6 +22,7 @@ void Board::create_board() {
         vector<Square> k;
         for (int j = 0; j < 8; j++){
             if ( (i + j) % 2 == 0 ) {
+                // shared pointer to no_piece
                 k.emplace_back(Square(i, j, new Piece("-", false)));
             } else {
                 k.emplace_back(Square(i, j, new Piece(" ", false)));
