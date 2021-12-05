@@ -10,6 +10,7 @@ using namespace std;
 
 class Player {
     bool winner = false;
+    map<string, char> pieces;
     vector<Square> move_history;
     string color;
     bool check = false;
@@ -22,6 +23,7 @@ class Player {
     void get_color();         //gets color
     void set_color(string c); //sets color
     ~Player();                //destructor
+    void initialize_pieces(string color); //sets the pieces each player conatains in its map structure
 };
 
 #endif
