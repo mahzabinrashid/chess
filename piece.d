@@ -1,1 +1,1 @@
-piece.o: piece.cc square.h piece.h
+piece.o: piece.cc square.h piece.h board.h

@@ -54,3 +54,14 @@ void Board::create_board() {
         cout << endl;
     }  
 }
+
+void Board::update_board(Square initial, Square final, Piece piece) {
+ //   box[0][0] = Square(0, 0, new Piece("R",true));
+   
+    for (std::size_t i = box.size(); i > 0; --i) {
+        for (std::size_t j = 0; j < box[i - 1].size(); ++j) {
+            cout << box[i - 1][j].get_piece()->get_name(); 
+        }
+        cout << endl;
+    }  
+}
