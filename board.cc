@@ -59,7 +59,6 @@ void Board::create_board() {
 }
 
 void Board::update_board(int row_initial, int row_final, int col_initial, int col_final) {
-    cout << board[row_initial][col_initial].get_piece()->get_name() << endl ;
     board[col_final][row_final].set_piece(board[col_initial][row_initial].get_piece());
     if ( (row_initial + col_initial) % 2 == 0 ) {
         board[col_initial][row_initial].set_piece(new Piece("-", false));
