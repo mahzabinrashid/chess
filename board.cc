@@ -59,11 +59,12 @@ void Board::create_board() {
 }
 
 void Board::update_board(int row_initial, int row_final, int col_initial, int col_final) {
-    board[row_final][col_final].set_piece(board[row_initial][col_initial].get_piece());
+    cout << board[row_initial][col_initial].get_piece()->get_name() << endl ;
+    board[col_final][row_final].set_piece(board[col_initial][row_initial].get_piece());
     if ( (row_initial + col_initial) % 2 == 0 ) {
-        board[row_initial][col_initial].set_piece(new Piece("-", false));
+        board[col_initial][row_initial].set_piece(new Piece("-", false));
     } else {
-        board[row_initial][col_initial].set_piece(new Piece(" ", false));
-    }
+        board[col_initial][row_initial].set_piece(new Piece(" ", false));
+    } 
     print(board);
 } 
