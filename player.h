@@ -3,15 +3,15 @@
 
 #include<vector>
 #include <string>
+#include "square.h"
 
 class Board;
+
 
 using namespace std;
 
 class Player {
     bool winner = false;
-    map<string, char> pieces;
-    vector<Square> move_history;
     string color;
     bool check = false;
     bool checkmate = false;
