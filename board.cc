@@ -58,12 +58,12 @@ void Board::create_board() {
     print(board);
 }
 
-void Board::update_board(int row_initial, int row_final, int col_initial, int col_final) {
-    board[col_final][row_final].set_piece(board[col_initial][row_initial].get_piece());
-    if ( (row_initial + col_initial) % 2 == 0 ) {
-        board[col_initial][row_initial].set_piece(new Piece("-", false));
+void Board::update_board(int col_i, int row_i, int col_f, int row_f) {
+    board[row_f][col_f].set_piece(board[row_i][col_i].get_piece());
+    if ( (row_i + col_i) % 2 == 0 ) {
+        board[row_i][col_i].set_piece(new Piece("-", false));
     } else {
-        board[col_initial][row_initial].set_piece(new Piece(" ", false));
+        board[row_i][col_i].set_piece(new Piece(" ", false));
     } 
     print(board);
 } 

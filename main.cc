@@ -5,7 +5,7 @@
 #include "board.h"
 using namespace std;
 
-int get_row_int(char row_char) {
+int get_col_int(char row_char) {
     int row_int;
     if (row_char == 'a') row_int = 0;
 	if (row_char == 'b') row_int = 1;
@@ -24,17 +24,17 @@ int main() {
     b.create_board();
     while (cin >> command) {
         if (command == "move") {
-            char read_initial_row, read_final_row;
-            int read_initial_col, read_final_col, initial_row, final_row, initial_col, final_col;
-            cin >> read_initial_row >> read_initial_col >> read_final_row >> read_final_col;
+            char read_initial_col, read_final_col;
+            int read_initial_row, read_final_row, initial_col, final_col, initial_row, final_row;
+            cin >> read_initial_col >> read_initial_row >> read_final_col >> read_final_row;
             
-            initial_row = get_row_int(read_initial_row);
-            final_row = get_row_int(read_final_row);
-            initial_col = read_initial_col - 1;
-            final_col = read_final_col - 1;
+            initial_col = get_col_int(read_initial_col);
+            final_col = get_col_int(read_final_col);
+            initial_row = read_initial_row - 1;
+            final_row = read_final_row - 1;
             
             if (true) { // if valid_move is true
-                b.update_board(initial_row, final_row, initial_col, final_col);
+                b.update_board(initial_col, initial_row, final_col, final_row);
             }
         }
     }
