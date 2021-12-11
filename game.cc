@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Game::init(Player p1, Player p2) {
+Game::init(Human p1, Human p2) {
     players.emplace_back(p1);
     players.emplace_back(p2);
     if (p1.is_white_player()) {
@@ -13,7 +13,7 @@ Game::init(Player p1, Player p2) {
     }
 };
 
-Game::player_move(Player player) {
+Game::player_move(Human player) {
     if (player != current_player_turn) { //not that player's turn
         cout << "It's not your turn" << endl;
         return false;
