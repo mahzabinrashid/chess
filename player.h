@@ -3,8 +3,10 @@
 
 #include<vector>
 #include <string>
+#include "square.h"
 
 class Board;
+
 
 using namespace std;
 

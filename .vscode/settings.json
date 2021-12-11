@@ -1,6 +1,22 @@
 {
   "files.associations": {
+<<<<<<< HEAD
     "vector": "cpp"
+=======
+    "vector": "cpp",
+    "__bit_reference": "cpp",
+    "__hash_table": "cpp",
+    "__split_buffer": "cpp",
+    "array": "cpp",
+    "initializer_list": "cpp",
+    "ios": "cpp",
+    "iterator": "cpp",
+    "string": "cpp",
+    "string_view": "cpp",
+    "unordered_map": "cpp",
+    "istream": "cpp",
+    "streambuf": "cpp"
+>>>>>>> feature/move_history
   },
   "C_Cpp_Runner.warnings": [
     "-Wall",
@@ -14,8 +30,12 @@
   "C_Cpp_Runner.cppStandard": "",
   "C_Cpp_Runner.excludeSearch": [],
   "C_Cpp_Runner.enableWarnings": true,
+<<<<<<< HEAD
   "C_Cpp_Runner.warningsAsError": false,
   "C_Cpp_Runner.cCompilerPath": "C:/msys64/mingw64/bin/gcc.exe",
   "C_Cpp_Runner.debuggerPath": "C:/msys64/mingw64/bin/gdb.exe",
   "C_Cpp_Runner.cppCompilerPath": "C:/msys64/mingw64/bin/g++.exe"
+=======
+  "C_Cpp_Runner.warningsAsError": false
+>>>>>>> feature/move_history
 }

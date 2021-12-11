@@ -59,6 +59,7 @@ void Board::create_board() {
 }
 
 void Board::update_board(int col_i, int row_i, int col_f, int row_f) {
+    move_history.emplace_back(Move(col_i, row_i, col_f, row_f, board[row_i][col_i].get_piece(), board[row_f][col_f].get_piece()));
     board[row_f][col_f].set_piece(board[row_i][col_i].get_piece());
     if ( (row_i + col_i) % 2 == 0 ) {
         board[row_i][col_i].set_piece(new Piece("-", false));
