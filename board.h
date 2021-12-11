@@ -4,12 +4,15 @@
 #include <string>
 #include <vector>
 #include "square.h"
+#include "player.h"
 class Square;
 
 using namespace std;
 
 class Board {
     vector<vector<Square>> board;
+    vector<Player> players;
+    Player current_player{true, true};
     public:
     void create_board();
     void update_board(int col_i, int row_i, int col_f, int row_f);
@@ -18,6 +21,7 @@ class Board {
     vector<string> valid_moves(string name, int col_i, int row_i, int col_f, int row_f); // outputs a vector of the valid moves available
     bool is_valid(int col_i, int row_i, int col_f, int row_f); // has the valid_moves method called inside it
     bool is_check(int col_i, int row_i, int col_f, int row_f); // checks if the king is in check after a piece has been moved
+    bool correct_player(int col_i, int row_i); // checks if the player making the move is the current player
 };
 
 #endif

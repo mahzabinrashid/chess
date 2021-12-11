@@ -65,7 +65,18 @@ void Board::create_board() {
     for (int i = 0; i < 8; i++) {
         board[1][i] = Square(6, i, new Piece("P",true));
     }
+    // 
+    players.emplace_back(Player(true, true));
+    players.emplace_back(Player(false, true));
     print(board);
+}
+
+bool Board::correct_player(int col_i, int row_i) {
+   if (current_player.is_white_player() == board[row_i][col_i].get_piece()->is_white()) {
+        return true;
+    } else {
+        return false;
+    } 
 }
 
 void Board::update_board(int col_i, int row_i, int col_f, int row_f) {
@@ -75,6 +86,11 @@ void Board::update_board(int col_i, int row_i, int col_f, int row_f) {
     } else {
         board[row_i][col_i].set_piece(new Piece("empty", true));
     } 
+    if (current_player.is_white_player() == players[0].is_white_player()) {
+        current_player = players[1];
+    } else {
+        current_player = players[0];
+    }
     print(board);
 } 
 
@@ -585,10 +601,4 @@ bool Board::is_valid(int col_i, int row_i, int col_f, int row_f) {
         }
     }
     return false;
-}
-
-bool Board::is_check(int col_i, int row_i, int col_f, int row_f) {
-    string object = board[row_f][col_f].get_piece()->get_name();
-    vector <string> possible_moves = valid_moves(object, col_i, row_i, col_f, row_f);
-
 }

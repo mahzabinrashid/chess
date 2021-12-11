@@ -22,19 +22,24 @@ int main() {
     string command;
     Board b;
     b.create_board();
+    
     while (cin >> command) {
         if (command == "move") {
             char read_initial_col, read_final_col;
             int read_initial_row, read_final_row, initial_row, final_row, initial_col, final_col;
             cin >> read_initial_col >> read_initial_row >> read_final_col >> read_final_row;
             
-            initial_col = get_row_int(read_initial_col);
-            final_col = get_row_int(read_final_col);
+            initial_col = get_col_int(read_initial_col);
+            final_col = get_col_int(read_final_col);
             initial_row = read_initial_row - 1;
             final_row = read_final_row - 1;
+
+            ;
             
             if (!(b.correct_command(read_initial_col, read_initial_row, read_final_col, read_final_row))) {
                 cout << "Incorrect position" << endl;
+            } else if (!b.correct_player(initial_col, initial_row)) {
+                cout << "Not this players turn" << endl;
             } else if (!(b.is_valid(initial_col, initial_row, final_col, final_row))) {
                 cout << "Cannot move piece there" << endl;
             } else {
@@ -42,4 +47,5 @@ int main() {
             }
         }
     }
+    
 }
