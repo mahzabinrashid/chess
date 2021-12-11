@@ -586,3 +586,9 @@ bool Board::is_valid(int col_i, int row_i, int col_f, int row_f) {
     }
     return false;
 }
+
+bool Board::is_check(int col_i, int row_i, int col_f, int row_f) {
+    string object = board[row_f][col_f].get_piece()->get_name();
+    vector <string> possible_moves = valid_moves(object, col_i, row_i, col_f, row_f);
+
+}
