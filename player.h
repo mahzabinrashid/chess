@@ -12,10 +12,12 @@ class Player {
     protected: 
     bool white_player;
     bool human;
+    int level;
     public:
-    Player(bool white_player, bool human); //constructor
+    Player(bool white_player, bool human, int level); //constructor
     bool is_white_player();
     bool is_human();  
+    bool get_level();  
     ~Player(); //destructor
 };
 #endif

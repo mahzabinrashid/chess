@@ -26,6 +26,10 @@ void print(vector<vector<Square>> board) {
     }  
 }
 
+Board::Board(vector<Player> players, Player current_player) : players{players}, current_player{current_player} {}
+
+Board::Board() {}
+
 void Board::create_board() {
     // creates the initial checkerboard
     for (int i = 0; i < 8; i++) {
@@ -65,10 +69,20 @@ void Board::create_board() {
     for (int i = 0; i < 8; i++) {
         board[1][i] = Square(6, i, new Piece("P",true));
     }
-    // 
-    players.emplace_back(Player(true, true));
-    players.emplace_back(Player(false, true));
     print(board);
+    cout << players[0].is_white_player() << endl;
+    cout << players[0].is_human() << endl;
+    cout << players[0].get_level() << endl;
+    cout << "player 2" << endl;
+    cout << players[1].is_white_player() << endl;
+    cout << players[1].is_human() << endl;
+    cout << players[1].get_level() << endl;
+    cout << "current player" << endl;
+    cout << current_player.is_white_player() << endl;
+    cout << current_player.is_human() << endl;
+    cout << current_player.get_level() << endl;
+    
+  
 }
 
 bool Board::correct_player(int col_i, int row_i) {

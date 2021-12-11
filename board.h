@@ -12,8 +12,10 @@ using namespace std;
 class Board {
     vector<vector<Square>> board;
     vector<Player> players;
-    Player current_player{true, true};
+    Player current_player{true, true, 0};
     public:
+    Board(vector<Player> players, Player current_player);
+    Board();
     void create_board();
     void update_board(int col_i, int row_i, int col_f, int row_f);
     bool correct_command(char col_i, int row_i, char col_f, int row_f);
