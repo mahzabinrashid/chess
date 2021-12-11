@@ -1,1 +1,1 @@
-{"buildTargets":[".PHONY","board.o","chess","clean","main.o","piece.o","square.o"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
+{"buildTargets":[".PHONY","board.o","chess","clean","main.o","piece.o","square.o","all"],"launchTargets":["d:\\Drive\\OneDrive\\Desktop\\chess>chess()"],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
