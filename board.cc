@@ -26,11 +26,11 @@ void print(vector<vector<Square>> board) {
     }  
 }
 
-void Board::create_board() {
+void Board::create_board(bool p1_human, bool p2_human, int p1_level, int p2_level) {
     // creates the initial checkerboard
     for (int i = 0; i < 8; i++) {
         vector<Square> k;
-        for (int j = 0; j < 8; j++){
+        for (int j = 0; j < 8; j++) {
             if ( (i + j) % 2 == 0 ) {
                 // shared pointer to no_piece
                 k.emplace_back(Square(i, j, new Piece("empty", false)));
@@ -65,9 +65,10 @@ void Board::create_board() {
     for (int i = 0; i < 8; i++) {
         board[1][i] = Square(6, i, new Piece("P",true));
     }
-    // 
-    players.emplace_back(Player(true, true));
-    players.emplace_back(Player(false, true));
+    // initialising the 2 players
+    players.emplace_back(Player(true, p1_human, p1_level));
+    players.emplace_back(Player(false, p2_human, p2_level));
+    current_player = players[0];
     print(board);
 }
 
