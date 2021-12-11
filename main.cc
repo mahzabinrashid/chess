@@ -25,7 +25,7 @@ int main() {
     while (cin >> command) {
         if (command == "move") {
             char read_initial_col, read_final_col;
-            int read_initial_row, read_final_row, initial_col, final_col, initial_row, final_row;
+            int read_initial_row, read_final_row, initial_row, final_row, initial_col, final_col;
             cin >> read_initial_col >> read_initial_row >> read_final_col >> read_final_row;
             
             initial_col = get_col_int(read_initial_col);
@@ -33,7 +33,11 @@ int main() {
             initial_row = read_initial_row - 1;
             final_row = read_final_row - 1;
             
-            if (true) { // if valid_move is true
+            if (!(b.correct_command(read_initial_col, read_initial_row, read_final_col, read_final_row))) {
+                cout << "Incorrect position" << endl;
+            } else if (!(b.is_valid(initial_col, initial_row, final_col, final_row))) {
+                cout << "Cannot move piece there" << endl;
+            } else {
                 b.update_board(initial_col, initial_row, final_col, final_row);
             }
         }

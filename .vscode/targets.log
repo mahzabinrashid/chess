@@ -1,0 +1,410 @@
+make.exe all -f D:\Drive\OneDrive\Desktop\chess\Makefile --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# This program built for i386-pc-mingw32
+ 
+
+# Make data base, printed on Sat Dec 11 05:18:11 2021
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+HOMEDRIVE = C:
+# automatic
+@F = $(notdir $@)
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# makefile
+CURDIR := d:/Drive/OneDrive/Desktop/chess
+# default
+SHELL := sh.exe
+# environment
+WINDIR = C:\Windows
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+ONEDRIVE = C:\Users\ASUS\OneDrive
+# environment
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+# makefile (from `piece.d', line 1)
+MAKEFILE_LIST :=  D:\Drive\OneDrive\Desktop\chess\Makefile main.d square.d board.d piece.d
+# environment
+TMP = C:\Users\ASUS\AppData\Local\Temp
+# makefile (from `D:\Drive\OneDrive\Desktop\chess\Makefile', line 2)
+CXXFLAGS = -std=c++14 -Wall -MMD
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+PROGRAMW6432 = C:\Program Files
+# environment
+PROGRAMDATA = C:\ProgramData
+# environment
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-87210d80-a2ae-4482-bbb9-306c2ecb463f-sock
+# environment
+VSCODE_CWD = C:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code
+# environment
+PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\msys64\mingw64\bin;C:\Program Files\PuTTY\;C:\Program Files (x86)\GnuWin32\bin;C:\Users\ASUS\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\ASUS\AppData\Local\Programs\Python\Python39\;C:\Users\ASUS\AppData\Local\Microsoft\WindowsApps;C:\Users\ASUS\AppData\Local\GitHubDesktop\bin;C:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\bin;
+# environment
+COMMONPROGRAMW6432 = C:\Program Files\Common Files
+# environment
+ZES_ENABLE_SYSMAN = 1
+# environment
+PROCESSOR_ARCHITECTURE = x86
+# environment
+USERPROFILE = C:\Users\ASUS
+# environment
+ALLUSERSPROFILE = C:\ProgramData
+# environment
+VSCODE_LOG_STACK = false
+# environment
+NUMBER_OF_PROCESSORS = 8
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives
+# automatic
+%F = $(notdir $%)
+# environment
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_16624_SYDDWORFRSTIWLTQ
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+COMPUTERNAME = LAPTOP-LEK0EMO7
+# environment
+PROGRAMFILES = C:\Program Files (x86)
+# environment
+DRIVERDATA = C:\Windows\System32\Drivers\DriverData
+# environment
+ASL.LOG = Destination=file
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+USERNAME = Sadman
+# environment
+PUBLIC = C:\Users\Public
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+# environment
+VSCODE_CODE_CACHE_PATH = C:\Users\ASUS\AppData\Roaming\Code\CachedData\7db1a2b88f7557e0a43fec75b6ba7e50b3e9f77e
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+COMMONPROGRAMFILES = C:\Program Files (x86)\Common Files
+# environment
+LOGONSERVER = \\LAPTOP-LEK0EMO7
+# makefile (from `D:\Drive\OneDrive\Desktop\chess\Makefile', line 5)
+DEPENDS = ${OBJECTS:.o=.d}
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+USERDOMAIN = LAPTOP-LEK0EMO7
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# makefile (from `D:\Drive\OneDrive\Desktop\chess\Makefile', line 3)
+EXEC = chess
+# default
+MAKE_VERSION := 3.81
+# makefile
+.DEFAULT_GOAL := chess
+# environment
+PROGRAMFILES(X86) = C:\Program Files (x86)
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+LOCALAPPDATA = C:\Users\ASUS\AppData\Local
+# environment
+PSMODULEPATH = C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+# default
+MAKE_COMMAND := make.exe
+# environment
+PROCESSOR_ARCHITEW6432 = AMD64
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# environment
+PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 140 Stepping 1, GenuineIntel
+# environment
+OS = Windows_NT
+# environment
+VSCODE_IPC_HOOK = \\.\pipe\91424adb9bf4556c76f3f7464c71b567-1.63.0-main-sock
+# environment
+HOMEPATH = \Users\ASUS
+# environment
+COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
+# environment
+PROMPT = $P$G
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+SYSTEMROOT = C:\Windows
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
+# environment
+APPDATA = C:\Users\ASUS\AppData\Roaming
+# environment
+TEMP = C:\Users\ASUS\AppData\Local\Temp
+# environment
+COMSPEC = C:\Windows\system32\cmd.exe
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# makefile (from `D:\Drive\OneDrive\Desktop\chess\Makefile', line 1)
+CXX = g++
+# environment
+LC_ALL = C
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# environment
+SYSTEMDRIVE = C:
+# environment
+SESSIONNAME = Console
+# environment
+PROCESSOR_REVISION = 8c01
+# environment
+MAKELEVEL := 0
+# makefile (from `D:\Drive\OneDrive\Desktop\chess\Makefile', line 4)
+OBJECTS = main.o square.o board.o piece.o
+# environment
+LANG = C
+# environment
+PROCESSOR_LEVEL = 6
+# environment
+VSCODE_PID = 16624
+# environment
+USERDOMAIN_ROAMINGPROFILE = LAPTOP-LEK0EMO7
+# variable set hash-table stats:
+# Load=93/1024=9%, Rehash=0, Collisions=9/125=7%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# C:\Program Files\Common Files\Oracle\Java\javapath (key C:/Program Files/Common Files/Oracle/Java/javapath, mtime 1638352754): 6 files, no impossibilities.
+# C:\Users\ASUS\AppData\Local\Programs\Python\Python39\ (key C:/Users/ASUS/AppData/Local/Programs/Python/Python39/, mtime 1619958258): 18 files, no impossibilities.
+# C:\Users\ASUS\AppData\Local\GitHubDesktop\bin (key C:/Users/ASUS/AppData/Local/GitHubDesktop/bin, mtime 1634342970): 4 files, no impossibilities.
+# C:\Windows\System32\WindowsPowerShell\v1.0\ (key C:/Windows/System32/WindowsPowerShell/v1.0/, mtime 1619651180): 30 files, no impossibilities.
+# C:\Windows\System32\Wbem (key C:/Windows/System32/Wbem, mtime 1636866244): 154 files, no impossibilities.
+# . (key d:/Drive/OneDrive/Desktop/chess, mtime 1639214646): 30 files, no impossibilities.
+# C:\Users\ASUS\AppData\Local\Programs\Python\Python39\Scripts\ (key C:/Users/ASUS/AppData/Local/Programs/Python/Python39/Scripts/, mtime 1619958261): 7 files, no impossibilities.
+# C:\Windows\System32\OpenSSH\: could not be stat'd.
+# C:\Program Files\PuTTY\ (key C:/Program Files/PuTTY/, mtime 1636938659): 12 files, no impossibilities.
+# C:\Windows (key C:/Windows, mtime 1638327993): 129 files, no impossibilities.
+# C:\Users\ASUS\AppData\Local\Microsoft\WindowsApps (key C:/Users/ASUS/AppData/Local/Microsoft/WindowsApps, mtime 1639005847): 21 files, no impossibilities.
+# C:\msys64\mingw64\bin (key C:/msys64/mingw64/bin, mtime 1634407971): 174 files, no impossibilities.
+# C:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\bin (key C:/Users/ASUS/AppData/Local/Programs/Microsoft VS Code/bin, mtime 1639211124): 4 files, no impossibilities.
+# C:\Program Files\Git\cmd (key C:/Program Files/Git/cmd, mtime 1620691854): 8 files, no impossibilities.
+# C:\Windows\system32 (key C:/Windows/system32, mtime 1639116624): 2816 files, no impossibilities.
+# C:\Program Files (x86)\GnuWin32\bin (key C:/Program Files (x86)/GnuWin32/bin, mtime 1639212855): 5 files, no impossibilities.
+
+# 3418 files, no impossibilities in 16 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+square.o: square.cc square.h piece.h board.h
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+all:
+#  Command-line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+square.cc:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.PHONY: clean
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+board.d:
+#  A default, MAKEFILES, or -include/sinclude makefile.
+#  Implicit rule search has been done.
+#  Last modified 2021-12-11 04:15:42
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+piece.o: piece.cc square.h piece.h board.h
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+piece.cc:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+board.o: board.cc board.h square.h piece.h
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+square.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+main.d:
+#  A default, MAKEFILES, or -include/sinclude makefile.
+#  Implicit rule search has been done.
+#  Last modified 2021-12-11 04:17:37
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+board.cc:
+#  Imp 
+licit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+D:\Drive\OneDrive\Desktop\chess\Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2021-12-11 04:22:41
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated. 
+
+#  commands to execute (from `D:\Drive\OneDrive\Desktop\chess\Makefile', line 15):
+	rm ${OBJECTS} ${EXEC} ${DEPENDS}
+	
+
+# Not a target:
+square.d:
+#  A default, MAKEFILES, or -include/sinclude makefile.
+#  Implicit rule search has been done.
+#  Last modified 2021-12-11 04:15:42
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+piece.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+chess: main.o square.o board.o piece.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `D:\Drive\OneDrive\Desktop\chess\Makefile', line 8):
+	${CXX} ${CXXFLAGS} ${OBJECTS} -o ${EXEC} 
+	
+
+main.o: main.cc board.h square.h piece.h
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+main.cc:
+#  Implicit rule search has n 
+ot been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+board.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+piece.d:
+#  A default, MAKEFILES, or -include/sinclude makefile.
+#  Implicit rule search has been done.
+#  Last modified 2021-12-11 04:24:06
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# files ha 
+sh-table stats:
+# Load=22/1024=2%, Rehash=0, Collisions=0/58=0%
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# # of strings in strcache: 5
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4023 / max = 4023 / min = 4023 / avg = 4023
+
+# Finished Make data base on Sat Dec 11 05:18:11 2021
+
+ 
+make.exe: *** No rule to make target `all'.  Stop.
+ 
