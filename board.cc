@@ -26,6 +26,10 @@ void print(vector<vector<Square>> board) {
     }  
 }
 
+Player Board::get_current_player() {
+    return current_player;
+}
+
 void Board::create_board(bool p1_human, bool p2_human, int p1_level, int p2_level) {
     // creates the initial checkerboard
     for (int i = 0; i < 8; i++) {

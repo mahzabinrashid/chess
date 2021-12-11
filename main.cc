@@ -25,6 +25,9 @@ int main() {
     bool p2_human = true; // player human
     int p1_level = 0; // human is 0
     int p2_level = 0;   
+    int score_w = 0;
+    int score_b = 0;
+
 
     while (cin >> command) {
         if (command == "game") {
@@ -42,8 +45,7 @@ int main() {
                 p2_level = l - '0';
             } 
             b.create_board(p1_human, p2_human, p1_level, p2_level);
-        }
-        if (command == "move") {
+        } else if (command == "move") {
             char read_initial_col, read_final_col;
             int read_initial_row, read_final_row, initial_row, final_row, initial_col, final_col;
             cin >> read_initial_col >> read_initial_row >> read_final_col >> read_final_row;
@@ -62,7 +64,16 @@ int main() {
             } else {
                 b.update_board(initial_col, initial_row, final_col, final_row);
             }
+        } else if (command == "resign") {
+            if (b.get_current_player().is_white_player() == true) {
+                score_b++;
+            } else {
+                score_w++;
+            }
+            break;
         }
     }
-    
+    cout << "Final Score:" << endl;
+    cout << "White:" << score_w << endl;
+    cout << "Black:" << score_b << endl;    
 }
