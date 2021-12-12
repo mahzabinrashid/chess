@@ -30,6 +30,15 @@ Player Board::get_current_player() {
     return current_player;
 }
 
+Board::~Board() {
+    for (std::size_t i = board.size(); i > 0; --i) {
+        for (std::size_t j = 0; j < board[i - 1].size(); ++j) {
+            delete  board[i - 1][j].get_piece();
+        }
+    }
+
+}
+
 void Board::create_board(bool p1_human, bool p2_human, int p1_level, int p2_level) {
     // creates the initial checkerboard
     for (int i = 0; i < 8; i++) {
@@ -43,6 +52,12 @@ void Board::create_board(bool p1_human, bool p2_human, int p1_level, int p2_leve
             }
         }
         board.emplace_back(k);
+    }
+    for (int i = 0; i < 8; i++) {
+        delete board[7][i].get_piece();
+        delete board[0][i].get_piece();
+        delete board[6][i].get_piece();
+        delete board[1][i].get_piece();
     }
     // fills checkerboard with pieces
     board[7][0] = Square(7, 0, new Piece("r",false));
@@ -85,6 +100,7 @@ bool Board::correct_player(int col_i, int row_i) {
 }
 
 void Board::update_board(int col_i, int row_i, int col_f, int row_f) {
+    delete board[row_f][col_f].get_piece();
     board[row_f][col_f].set_piece(board[row_i][col_i].get_piece());
     if ( (row_i + col_i) % 2 == 0 ) {
         board[row_i][col_i].set_piece(new Piece("empty", false));

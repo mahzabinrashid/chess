@@ -23,6 +23,7 @@ class Board {
     bool is_valid(int col_i, int row_i, int col_f, int row_f); // has the valid_moves method called inside it
     bool is_check(int col_i, int row_i, int col_f, int row_f); // checks if the king is in check after a piece has been moved
     bool correct_player(int col_i, int row_i); // checks if the player making the move is the current player
+    ~Board(); //destructor
 };
 
 #endif
