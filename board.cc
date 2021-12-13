@@ -57,7 +57,6 @@ void Board::setup_board() {
     // initialising the 2 players
     players.emplace_back(Player(true, true, 0));
     players.emplace_back(Player(false, true, 0));
-    cout << "i ran setup_board" << endl;
     current_player = players[0];
     print(board);
 }
