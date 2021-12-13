@@ -559,7 +559,7 @@ vector<string> Board::valid_moves(string name, int col_i, int row_i, int col_f, 
         for (int i = 0; i < queen_r.size(); ++i) {
             moves.emplace_back(queen_r[i]);
         }
-        for (int i = 0; i < queen_b.size(); ++i) {
+        for (std::size_t i = 0; i < queen_b.size(); ++i) {
             moves.emplace_back(queen_b[i]);
         }
     }
@@ -570,7 +570,7 @@ vector<string> Board::valid_moves(string name, int col_i, int row_i, int col_f, 
         for (int i = 0; i < queen_r.size(); ++i) {
             moves.emplace_back(queen_r[i]);
         }
-        for (int i = 0; i < queen_b.size(); ++i) {
+        for (std::size_t i = 0; i < queen_b.size(); ++i) {
             moves.emplace_back(queen_b[i]);
         }
     }
@@ -683,7 +683,7 @@ bool Board::is_valid(int col_i, int row_i, int col_f, int row_f) {
     string object = board[row_i][col_i].get_piece()->get_name();
     string notation_f = board_coordinates(col_f, row_f);
     vector <string> possible_moves = valid_moves(object, col_i, row_i, col_f, row_f);
-    for (int i = 0; i < possible_moves.size(); ++i) {
+    for (std::size_t i = 0; i < possible_moves.size(); ++i) {
         if (notation_f == possible_moves[i]) {
             return true;
         }
