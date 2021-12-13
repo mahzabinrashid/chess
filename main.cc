@@ -27,10 +27,61 @@ int main() {
     int p2_level = 0;   
     int score_w = 0;
     int score_b = 0;
-
-
+    bool manual_setup = true;
+    bool setup = false;
     while (cin >> command) {
-        if (command == "game") {
+        if (command == "setup") { 
+            if (manual_setup == true) {
+                b.setup_board(); 
+                setup = true;
+            } else {
+                cout << "Cannot enter setup mode in the middle of a game" << endl;
+            }
+        } else if (command == "+") {
+            if (setup == true) {
+                string piece;
+                char read_col;
+                int read_row, final_row, final_col;
+                cin >> piece >> read_col >> read_row;
+                final_col = get_col_int(read_col);
+                final_row = read_row - 1;
+                b.put_piece(piece, final_col, final_row); 
+            } else {
+                cout << "Enter setup mode by typing 'setup' to enter setup mode before using this command." << endl;
+            }       
+        } else if (command == "=") {
+            if (setup == true) {
+                string colour;
+                bool wp;
+                cin >> colour;
+                if (colour == "white") {
+                    wp = true;
+                } else {
+                    wp = false;
+                }
+                b.change_current_player(wp);
+            } else {
+                cout << "Enter setup mode by typing 'setup' to enter setup mode before using this command." << endl; 
+            }
+        } else if (command == "-") { 
+            if (setup == true) {
+                char read_col;
+                int read_row, final_row, final_col;
+                cin >> read_col >> read_row;
+                final_col = get_col_int(read_col);
+                final_row = read_row - 1;
+                b.delete_piece(final_col, final_row);
+            } else {
+                cout << "Enter setup mode by typing 'setup' to enter setup mode before using this command." << endl; 
+            }
+        } else if (command == "done") {
+            if (b.valid_setup()) {
+                cout << "Setup successfully completed." << endl;
+            } else {
+                cout << "Please ensure you meet the criteria for a valid setup." << endl;
+            }
+        } else if (command == "game") {
+            manual_setup = false;
             string player_1, player_2;
             cin >>  player_1 >> player_2;
             string ai ("computer");
