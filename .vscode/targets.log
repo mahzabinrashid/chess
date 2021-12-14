@@ -8,7 +8,11 @@ make.exe all -f D:\Drive\OneDrive\Desktop\chess\Makefile --print-data-base --no-
 # This program built for i386-pc-mingw32
  
 
+<<<<<<< HEAD
 # Make data base, printed on Tue Dec 14 16:56:40 2021
+=======
+# Make data base, printed on Tue Dec 14 00:05:31 2021
+>>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
 
 # Variables
 
@@ -35,7 +39,12 @@ CURDIR := d:/Drive/OneDrive/Desktop/chess
 # default
 SHELL := sh.exe
 # environment
+<<<<<<< HEAD
 WINDIR = C:\Windows
+=======
+WINDIR = C:\Windo 
+ws
+>>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
@@ -55,7 +64,11 @@ PROGRAMW6432 = C:\Program Files
 # environment
 PROGRAMDATA = C:\ProgramData
 # environment
+<<<<<<< HEAD
 VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-a73032af-51b7-4f18-9902-c7edae472e65-sock
+=======
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-7a2fd8fa-bb49-4a0d-907f-03ce419c1f26-sock
+>>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
 # environment
 VSCODE_CWD = C:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code
 # environment
@@ -81,11 +94,20 @@ ELECTRON_RUN_AS_NODE = 1
 # automatic
 %F = $(notdir $%)
 # environment
+<<<<<<< HEAD
 CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_25404_RUNHYIASXBYAOSKJ
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
 COMPUTERNAME = LAPTOP-LEK0EMO7
+=======
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_3616_EDXPGGVPDPLNIAFN
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+COMPUTERNAME = LAPTOP-LE 
+K0EMO7
+>>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
 # environment
 PROGRAMFILES = C:\Program Files (x86)
 # environment
@@ -101,7 +123,12 @@ PUBLIC = C:\Users\Public
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
 # environment
+<<<<<<< HEAD
 VSCODE_CODE_CACHE_PATH = C:\Users\ASUS\AppData\Roaming\Code\CachedData\fe719cd3e5825bf14e14182fddeb88ee8daf044f
+=======
+VSCODE_CODE_CACHE_PATH = C:\Users\ASUS\AppData\Roaming\Code\CachedData\7db1a2b88f7557e0a43fec75b6ba7e50b3e9f7 
+7e
+>>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
@@ -141,11 +168,20 @@ PROCESSOR_ARCHITEW6432 = AMD64
 # automatic
 *F = $(notdir $*)
 # environment
+<<<<<<< HEAD
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 140 Stepping 1, GenuineIntel
 # environment
 OS = Windows_NT
 # environment
 VSCODE_IPC_HOOK = \\.\pipe\91424adb9bf4556c76f3f7464c71b567-1.63.1-main-sock
+=======
+PROCESSOR 
+_IDENTIFIER = Intel64 Family 6 Model 140 Stepping 1, GenuineIntel
+# environment
+OS = Windows_NT
+# environment
+VSCODE_IPC_HOOK = \\.\pipe\91424adb9bf4556c76f3f7464c71b567-1.63.0-main-sock
+>>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
 # environment
 HOMEPATH = \Users\ASUS
 # environment
@@ -161,7 +197,12 @@ SYSTEMROOT = C:\Windows
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
+<<<<<<< HEAD
 +F = $(notdir $+)
+=======
++F = $(notdir $+) 
+
+>>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
 # environment
 APPDATA = C:\Users\ASUS\AppData\Roaming
 # environment
@@ -195,7 +236,11 @@ LANG = C
 # environment
 PROCESSOR_LEVEL = 6
 # environment
+<<<<<<< HEAD
 VSCODE_PID = 25404
+=======
+VSCODE_PID = 3616
+>>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
 # environment
 USERDOMAIN_ROAMINGPROFILE = LAPTOP-LEK0EMO7
 # variable set hash-table stats:
@@ -207,6 +252,7 @@ USERDOMAIN_ROAMINGPROFILE = LAPTOP-LEK0EMO7
 
 # Directories
 
+<<<<<<< HEAD
 # C:\Program Files\Common Files\Oracle\Java\javapath (key C:/Program Files/Common Files/Oracle/Java/javapath, mtime 1638352754): 6 files, no impossibilities.
 # C:\Users\ASUS\AppData\Local\Programs\Python\Python39\ (key C:/Users/ASUS/AppData/Local/Programs/Python/Python39/, mtime 1619958258): 18 files, no impossibilities.
 # C:\Users\ASUS\AppData\Local\GitHubDesktop\bin (key C:/Users/ASUS/AppData/Local/GitHubDesktop/bin, mtime 1634342970): 4 files, no impossibilities.
@@ -220,11 +266,34 @@ USERDOMAIN_ROAMINGPROFILE = LAPTOP-LEK0EMO7
 # C:\Users\ASUS\AppData\Local\Microsoft\WindowsApps (key C:/Users/ASUS/AppData/Local/Microsoft/WindowsApps, mtime 1639430200): 21 files, no impossibilities.
 # C:\msys64\mingw64\bin (key C:/msys64/mingw64/bin, mtime 1634407971): 174 files, no impossibilities.
 # C:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\bin (key C:/Users/ASUS/AppData/Local/Programs/Microsoft VS Code/bin, mtime 1639515405): 4 files, no impossibilities.
+=======
+# C:\Program Files\Common Files\Oracle\Java\javapath (key C:/Program Files/ 
+Common Files/Oracle/Java/javapath, mtime 1638352754): 6 files, no impossibilities.
+# C:\Users\ASUS\AppData\Local\Programs\Python\Python39\ (key C:/Users/ASUS/AppData/Local/Programs/Python/Python39/, mtime 1619958258): 18 files, no impossibilities.
+# C:\Users\ASUS\AppData\Local\GitHubDesktop\bin (key C:/Users/ASUS/AppData/Local/GitHubDesktop/bin, mtime 1634342970): 4 files, no impossibilities.
+# C:\Windows\System32\WindowsPowerShell\v1.0\ (key C:/Windows/System32/WindowsPowerShell/v1.0/, mtime 1619651180): 3 
+0 files, no impossibilities.
+# C:\Windows\System32\Wbem (key C:/Windows/System32/Wbem, mtime 1636866244): 154 files, no impossibilities.
+# . (key d:/Drive/OneDrive/Desktop/chess, mtime 1639458299): 30 files, no impossibilities.
+# C:\Users\ASUS\AppData\Local\Programs\Python\Python39\Scripts\ (key C:/Users/ASUS/AppData/Local/Programs/Python/Python39/Scripts/, mtime 1619958261): 7 files, no impossibilities.
+# C:\Windows\System32\OpenSSH\: could not be stat'd.
+# C:\Program Files\PuTTY\ (key C:/Program Files/PuT 
+TY/, mtime 1636938659): 12 files, no impossibilities.
+# C:\Windows (key C:/Windows, mtime 1638327993): 129 files, no impossibilities.
+# C:\Users\ASUS\AppData\Local\Microsoft\WindowsApps (key C:/Users/ASUS/AppData/Local/Microsoft/WindowsApps, mtime 1639430200): 21 files, no impossibilities.
+# C:\msys64\mingw64\bin (key C:/msys64/mingw64/bin, mtime 1634407971): 174 files, no impossibilities.
+# C:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\bin (key C:/Users/ASUS/AppData/Local/Programs/Microsoft VS Cod 
+e/bin, mtime 1639211124): 4 files, no impossibilities.
+>>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
 # C:\Program Files\Git\cmd (key C:/Program Files/Git/cmd, mtime 1620691854): 8 files, no impossibilities.
 # C:\Windows\system32 (key C:/Windows/system32, mtime 1639433420): 2821 files, no impossibilities.
 # C:\Program Files (x86)\GnuWin32\bin (key C:/Program Files (x86)/GnuWin32/bin, mtime 1639212855): 5 files, no impossibilities.
 
+<<<<<<< HEAD
 # 3425 files, no impossibilities in 16 directories.
+=======
+# 3423 files, no impossibilities in 16 directories.
+>>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
 
 # Implicit Rules
 
@@ -232,7 +301,12 @@ USERDOMAIN_ROAMINGPROFILE = LAPTOP-LEK0EMO7
 
 # Files
 
+<<<<<<< HEAD
 square.o: square.cc square.h piece.h board.h player.h
+=======
+square.o: square.cc s 
+quare.h piece.h board.h player.h
+>>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -253,6 +327,10 @@ player.cc:
 #  File has not been updated.
 
 # Not a target:
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
 square.cc:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -273,7 +351,12 @@ square.cc:
 board.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
+<<<<<<< HEAD
 #  Last modified 2021-12-14 16:56:19
+=======
+#  Last mod 
+ified 2021-12-13 23:45:39
+>>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -291,7 +374,12 @@ piece.cc:
 #  File has not been updated.
 
 board.o: board.cc board.h square.h piece.h player.h
+<<<<<<< HEAD
 #  Implicit rule search has not been done.
+=======
+#  Impl 
+icit rule search has not been done.
+>>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -311,7 +399,12 @@ square.h:
 main.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
+<<<<<<< HEAD
 #  Last modified 2021-12-14 16:56:19
+=======
+#  Last modified 2 
+021-12-13 23:45:39
+>>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -331,8 +424,14 @@ board.cc:
 
 # Not a target:
 D:\Drive\OneDrive\Desktop\chess\Makefile:
+<<<<<<< HEAD
 #  Implicit rule search has been done.
 #  Last modified 2021-12-14 16:45:55
+=======
+#  Implicit rule search has been  
+done.
+#  Last modified 2021-12-13 23:45:39
+>>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -349,9 +448,16 @@ clean:
 
 # Not a target:
 player.d:
+<<<<<<< HEAD
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
 #  Last modified 2021-12-14 16:45:55
+=======
+#  A default, MAKEFILES, or -include/sinclude ma 
+kefile.
+#  Implicit rule search has been done.
+#  Last modified 2021-12-13 23:45:39
+>>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -361,13 +467,22 @@ player.d:
 square.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
+<<<<<<< HEAD
 #  Last modified 2021-12-14 16:56:18
+=======
+#  Last modified 2021-12-13 23:45:39
+>>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
+<<<<<<< HEAD
 # Not a target:
+=======
+# Not a targ 
+et:
+>>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
 piece.h:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -383,7 +498,12 @@ chess: piece.o square.o board.o main.o player.o
 
 main.o: main.cc board.h square.h piece.h player.h
 #  Implicit rule search has not been done.
+<<<<<<< HEAD
 #  Modification time never checked.
+=======
+#  Modifica 
+tion time never checked.
+>>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
 #  File has not been updated.
 
 # Not a target:
@@ -402,12 +522,19 @@ board.h:
 piece.d:
 #  A default, MAKEFILES, or -include/sinclude makefile.
 #  Implicit rule search has been done.
+<<<<<<< HEAD
 #  Last modified 2021-12-14 16:56:17
 #  File has been updated.
 # 
 make.exe: *** No rule to make target `all'.  Stop.
  
   Successfully updated.
+=======
+#  Last modified 2021-12-13 23:45:39
+#  File has been updated.
+#   
+Successfully updated.
+>>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
@@ -426,9 +553,19 @@ player.o: player.cc player.h
 
 # # of strings in strcache: 6
 # # of strcache buffers: 1
+<<<<<<< HEAD
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4014 / max = 4014 / min = 4014 / avg = 4014
 
 # Finished Make data base on Tue Dec 14 16:56:40 2021
+=======
+# strcache size: total = 4096 / max = 4096 / m 
+make.exe: *** No rule to make target `all'.  Stop.
+ 
+in = 4096 / avg = 4096
+# strcache free: total = 4014 / max = 4014 / min = 4014 / avg = 4014
+
+# Finished Make data base on Tue Dec 14 00:05:31 2021
+>>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
 
  

@@ -18,6 +18,7 @@ class Player {
     bool is_white_player();
     bool is_human();  
     int get_level();
+    void set_white_player(bool wp);
     ~Player(); //destructor
 };
 #endif

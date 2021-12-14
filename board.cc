@@ -7,7 +7,6 @@
 using namespace std;
 
 void print(vector<vector<Square>> board) {
-    // prints final checkerboard 
     string name;
     for (std::size_t i = board.size(); i > 0; --i) {
         for (std::size_t j = 0; j < board[i - 1].size(); ++j) {
@@ -26,26 +25,83 @@ void print(vector<vector<Square>> board) {
     }  
 }
 
-Player Board::get_current_player() {
-    return current_player;
+
+void Board::put_piece(string piece, int final_col, int final_row) {
+    bool wp;
+    if (isupper(piece[0])) {
+        wp = true;
+    } else {
+        wp = false;
+    }
+    delete board[final_row][final_col].get_piece();
+    board[final_row][final_col] = Square(final_row, final_col, new Piece(piece,wp));
+    print(board);
 }
 
-Board::~Board() {
+void Board::change_current_player(bool white) {
+    current_player.set_white_player(white);
+}
+
+void Board::delete_piece(int col_f, int row_f) {
+    delete board[row_f][col_f].get_piece();
+    if ( (row_f + col_f) % 2 == 0 ) {
+        board[row_f][col_f].set_piece(new Piece("empty", false));
+    } else {
+        board[row_f][col_f].set_piece(new Piece("empty", true));
+    } 
+    print(board);
+}
+
+void Board::setup_board() {
+    print_initial_board();
+    // initialising the 2 players
+    players.emplace_back(Player(true, true, 0));
+    players.emplace_back(Player(false, true, 0));
+    current_player = players[0];
+    print(board);
+}
+bool Board::valid_setup() {
+    // ALSO neither king is in check! (not implemented)
+    bool valid;
+    int wk = 0;
+    int bk = 0;
+    // board contains exactly one white king and exactly one black king
     for (std::size_t i = board.size(); i > 0; --i) {
         for (std::size_t j = 0; j < board[i - 1].size(); ++j) {
-            delete  board[i - 1][j].get_piece();
+            if (board[i - 1][j].get_piece()->get_name() == "K") {
+                wk++;
+            }
+            if (board[i - 1][j].get_piece()->get_name() == "k") {
+                bk++;
+            }
         }
     }
-
+    if ((wk == 1) && (bk == 1)) {
+        valid = true;
+    } else {
+        valid = false;
+    }
+    // no pawns are on the first or last row of the board
+    for (int i = 0; i < 8; i++) {
+        if ((board[7][i].get_piece()->get_name() == "p") || (board[0][i].get_piece()->get_name() == "p")
+        || (board[7][i].get_piece()->get_name() == "P") || (board[0][i].get_piece()->get_name() == "P")) {
+            valid = false;
+        }
+    }
+    return valid;
 }
 
-void Board::create_board(bool p1_human, bool p2_human, int p1_level, int p2_level) {
-    // creates the initial checkerboard
-    for (int i = 0; i < 8; i++) {
+   
+   
+
+// helper functions
+// prints final checkerboard 
+
+void Board::print_initial_board() {
+        for (int i = 0; i < 8; i++) {
         vector<Square> k;
         for (int j = 0; j < 8; j++) {
             if ( (i + j) % 2 == 0 ) {
-                // shared pointer to no_piece
                 k.emplace_back(Square(i, j, new Piece("empty", false)));
             } else {
                 k.emplace_back(Square(i, j, new Piece("empty", true)));
@@ -53,6 +109,15 @@ void Board::create_board(bool p1_human, bool p2_human, int p1_level, int p2_leve
         }
         board.emplace_back(k);
     }
+}
+
+Player Board::get_current_player() {
+    return current_player;
+}
+
+void Board::create_board() {
+    // creates the initial checkerboard
+    print_initial_board();
     for (int i = 0; i < 8; i++) {
         delete board[7][i].get_piece();
         delete board[0][i].get_piece();
@@ -84,11 +149,14 @@ void Board::create_board(bool p1_human, bool p2_human, int p1_level, int p2_leve
     for (int i = 0; i < 8; i++) {
         board[1][i] = Square(6, i, new Piece("P",true));
     }
+    print(board);
+}
+
+void Board::initialise_players(bool p1_human, bool p2_human, int p1_level, int p2_level) {
     // initialising the 2 players
     players.emplace_back(Player(true, p1_human, p1_level));
     players.emplace_back(Player(false, p2_human, p2_level));
     current_player = players[0];
-    print(board);
 }
 
 bool Board::correct_player(int col_i, int row_i) {
@@ -492,7 +560,7 @@ vector<string> Board::valid_moves(string name, int col_i, int row_i, int col_f, 
         for (int i = 0; i < queen_r.size(); ++i) {
             moves.emplace_back(queen_r[i]);
         }
-        for (int i = 0; i < queen_b.size(); ++i) {
+        for (std::size_t i = 0; i < queen_b.size(); ++i) {
             moves.emplace_back(queen_b[i]);
         }
     }
@@ -503,7 +571,7 @@ vector<string> Board::valid_moves(string name, int col_i, int row_i, int col_f, 
         for (int i = 0; i < queen_r.size(); ++i) {
             moves.emplace_back(queen_r[i]);
         }
-        for (int i = 0; i < queen_b.size(); ++i) {
+        for (std::size_t i = 0; i < queen_b.size(); ++i) {
             moves.emplace_back(queen_b[i]);
         }
     }
@@ -624,7 +692,7 @@ bool Board::is_valid(int col_i, int row_i, int col_f, int row_f) {
             }
         }
     } else {
-        for (int i = 0; i < possible_moves.size(); ++i) {
+        for (std::size_t i = 0; i < possible_moves.size(); ++i) {
             if (notation_f == possible_moves[i]) {
                 bool white = board[row_i][col_i].get_piece()->is_white();
                 if (!(will_be_check(object, white, notation_f))) {
@@ -729,5 +797,12 @@ bool Board::is_checkmate(int col, int row) {
         return true;
     } else {
         return false;
+    }
+
+Board::~Board() {
+    for (std::size_t i = board.size(); i > 0; --i) {
+        for (std::size_t j = 0; j < board[i - 1].size(); ++j) {
+            delete  board[i - 1][j].get_piece();
+        }
     }
 }
