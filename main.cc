@@ -122,7 +122,10 @@ int main() {
 
             if (!(b.correct_command(read_initial_col, read_initial_row, read_final_col, read_final_row))) {
                 cout << "Incorrect position" << endl;
-            } else if (!b.correct_player(initial_col, initial_row)) {
+            } else if (b.empty_square(initial_col, initial_row)) {
+                cout << "This is an empty square. Not possible. " << endl;
+            }
+            else if (!b.correct_player(initial_col, initial_row)) {
                 cout << "Not this player's turn" << endl;
             } else if (!(b.is_valid(initial_col, initial_row, final_col, final_row))) {
                 cout << "Cannot move piece there" << endl;
