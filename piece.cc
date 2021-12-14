@@ -21,11 +21,6 @@ void Piece::set_white(bool theWhite) {
     white = theWhite;
 }
 
-// will be pure virtual and there'll be validation before move is made
-void Piece::move(Board board, Square initial, Square final) {
-    cout << "hi";
-}
-
 
 
 
