@@ -1,1 +1,1 @@
-main.o: main.cc board.h square.h piece.h
+main.o: main.cc board.h square.h piece.h player.h

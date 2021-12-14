@@ -21,9 +21,31 @@ int get_col_int(char row_char) {
 int main() {
     string command;
     Board b;
-    b.create_board();
+    bool p1_human = true; // player human 
+    bool p2_human = true; // player human
+    int p1_level = 0; // human is 0
+    int p2_level = 0;   
+    int score_w = 0;
+    int score_b = 0;
+
+
     while (cin >> command) {
-        if (command == "move") {
+        if (command == "game") {
+            string player_1, player_2;
+            cin >>  player_1 >> player_2;
+            string ai ("computer");
+            if (player_1.find(ai) != string::npos) {
+                p1_human = false; // player computer
+                char l = player_1.at(9);
+                p1_level = l - '0';
+            } 
+            if (player_2.find(ai) != string::npos) {
+                p2_human = false; // player computer
+                char l = player_2.at(9);
+                p2_level = l - '0';
+            } 
+            b.create_board(p1_human, p2_human, p1_level, p2_level);
+        } else if (command == "move") {
             char read_initial_col, read_final_col;
             int read_initial_row, read_final_row, initial_row, final_row, initial_col, final_col;
             cin >> read_initial_col >> read_initial_row >> read_final_col >> read_final_row;
@@ -32,10 +54,12 @@ int main() {
             final_col = get_col_int(read_final_col);
             initial_row = read_initial_row - 1;
             final_row = read_final_row - 1;
-            
+
             if (!(b.correct_command(read_initial_col, read_initial_row, read_final_col, read_final_row))) {
                 cout << "Incorrect position" << endl;
-            } else if (!(b.is_valid(initial_col, initial_row, final_col, final_row)) && b.becomes_check == false) {
+            } else if (!b.correct_player(initial_col, initial_row)) {
+                cout << "Not this player's turn" << endl;
+            } else if (!(b.is_valid(initial_col, initial_row, final_col, final_row))) {
                 cout << "Cannot move piece there" << endl;
             } else if (!(b.is_valid(initial_col, initial_row, final_col, final_row)) && b.becomes_check == true) {
                 cout << "Cannot move King, will be in check" << endl;
@@ -51,6 +75,16 @@ int main() {
                     }
                 }
             }
+        } else if (command == "resign") {
+            if (b.get_current_player().is_white_player() == true) {
+                score_b++;
+            } else {
+                score_w++;
+            }
+            break;
         }
     }
+    cout << "Final Score:" << endl;
+    cout << "White:" << score_w << endl;
+    cout << "Black:" << score_b << endl;    
 }

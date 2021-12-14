@@ -26,11 +26,24 @@ void print(vector<vector<Square>> board) {
     }  
 }
 
-void Board::create_board() {
+Player Board::get_current_player() {
+    return current_player;
+}
+
+Board::~Board() {
+    for (std::size_t i = board.size(); i > 0; --i) {
+        for (std::size_t j = 0; j < board[i - 1].size(); ++j) {
+            delete  board[i - 1][j].get_piece();
+        }
+    }
+
+}
+
+void Board::create_board(bool p1_human, bool p2_human, int p1_level, int p2_level) {
     // creates the initial checkerboard
     for (int i = 0; i < 8; i++) {
         vector<Square> k;
-        for (int j = 0; j < 8; j++){
+        for (int j = 0; j < 8; j++) {
             if ( (i + j) % 2 == 0 ) {
                 // shared pointer to no_piece
                 k.emplace_back(Square(i, j, new Piece("empty", false)));
@@ -39,6 +52,12 @@ void Board::create_board() {
             }
         }
         board.emplace_back(k);
+    }
+    for (int i = 0; i < 8; i++) {
+        delete board[7][i].get_piece();
+        delete board[0][i].get_piece();
+        delete board[6][i].get_piece();
+        delete board[1][i].get_piece();
     }
     // fills checkerboard with pieces
     board[7][0] = Square(7, 0, new Piece("r",false));
@@ -65,16 +84,34 @@ void Board::create_board() {
     for (int i = 0; i < 8; i++) {
         board[1][i] = Square(6, i, new Piece("P",true));
     }
+    // initialising the 2 players
+    players.emplace_back(Player(true, p1_human, p1_level));
+    players.emplace_back(Player(false, p2_human, p2_level));
+    current_player = players[0];
     print(board);
 }
 
+bool Board::correct_player(int col_i, int row_i) {
+   if (current_player.is_white_player() == board[row_i][col_i].get_piece()->is_white()) {
+        return true;
+    } else {
+        return false;
+    } 
+}
+
 void Board::update_board(int col_i, int row_i, int col_f, int row_f) {
+    delete board[row_f][col_f].get_piece();
     board[row_f][col_f].set_piece(board[row_i][col_i].get_piece());
     if ( (row_i + col_i) % 2 == 0 ) {
         board[row_i][col_i].set_piece(new Piece("empty", false));
     } else {
         board[row_i][col_i].set_piece(new Piece("empty", true));
     } 
+    if (current_player.is_white_player() == players[0].is_white_player()) {
+        current_player = players[1];
+    } else {
+        current_player = players[0];
+    }
     print(board);
 } 
 
