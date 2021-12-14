@@ -14,7 +14,7 @@
       "program": "d:/Drive/OneDrive/Desktop/chess/build/Debug/outDebug",
       "internalConsoleOptions": "openOnSessionStart",
       "MIMode": "gdb",
-      "miDebuggerPath": "C:/msys64/mingw64/bin/gdb.exe",
+      "miDebuggerPath": "gdb",
       "externalConsole": false,
       "setupCommands": [
         {
