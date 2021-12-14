@@ -613,13 +613,121 @@ vector<string> Board::valid_moves(string name, int col_i, int row_i, int col_f, 
 }
 
 bool Board::is_valid(int col_i, int row_i, int col_f, int row_f) {
+    becomes_check = false;
     string object = board[row_i][col_i].get_piece()->get_name();
     string notation_f = board_coordinates(col_f, row_f);
     vector <string> possible_moves = valid_moves(object, col_i, row_i, col_f, row_f);
+    if (object != "k" && object != "K") {
+        for (int i = 0; i < possible_moves.size(); ++i) {
+            if (notation_f == possible_moves[i]) {
+                return true;
+            }
+        }
+    } else {
+        for (int i = 0; i < possible_moves.size(); ++i) {
+            if (notation_f == possible_moves[i]) {
+                bool white = board[row_i][col_i].get_piece()->is_white();
+                if (!(will_be_check(object, white, notation_f))) {
+                    return true;
+                } else {
+                    becomes_check = true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+// so far sees if there is a check after a piece has been moves by the opponent
+bool Board::is_check(int col_i, int row_i, int col_f, int row_f) {
+    string object = board[row_f][col_f].get_piece()->get_name();
+    vector <string> possible_moves = valid_moves(object, col_f, row_f, col_i, row_i);
+    bool white = board[row_f][col_f].get_piece()->is_white();
+    string king;
+    if (white == true) {
+        king = "k";
+    } else {
+        king = "K";
+    }
+    int king_row;
+    int king_col;
+    for (int i = 0; i < 8; ++i) {
+        for (int j = 0; j < 8; j++) {
+            string temp = board[i][j].get_piece()->get_name();
+            if (temp == king) {
+                king_row = i;
+                king_col = j;
+                break;
+            }
+        }
+    }
+    string king_pos = board_coordinates(king_col, king_row);
     for (int i = 0; i < possible_moves.size(); ++i) {
-        if (notation_f == possible_moves[i]) {
+        if (king_pos == possible_moves[i]) {
             return true;
         }
     }
     return false;
+}
+// will be king's initial and final position
+bool Board::will_be_check(string name, bool white, string final_pos) {
+    vector <string> opponent_moves;
+    for (int i = 0; i < 8; ++i) {
+        for (int j = 0; j < 8; ++j) {
+            if (board[i][j].get_piece()->is_white() != white) {
+                string temp_name = board[i][j].get_piece()->get_name();
+                vector <string> temp = valid_moves(temp_name, j, i, j, i);
+                for (int k = 0; k < temp.size(); ++k) {
+                    opponent_moves.emplace_back(temp[k]);
+                }
+            }
+        }
+    }
+    for (int i = 0; i < opponent_moves.size(); ++i) {
+        if (final_pos == opponent_moves[i]) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// requires the final position of the piece moved
+bool Board::is_checkmate(int col, int row) {
+    bool white = board[row][col].get_piece()->is_white();
+    string name;
+    if (white == true) {
+        name = "k";
+    } else {
+        name = "K";
+    }
+    bool color;
+    if (name == "k") {
+        color = false;
+    } else {
+        color = true;
+    }
+    int king_row;
+    int king_col;
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            if (board[i][j].get_piece()->get_name() == name) {
+                king_row = i;
+                king_col = j;
+                break;
+            }
+        }
+    }
+    vector<string> possible_moves = valid_moves(name, king_col, king_row, king_col, king_row);
+    int count = possible_moves.size();
+    for (int i = 0; i < count; i++) {
+        cout << possible_moves[i] << endl;
+        if (will_be_check(name, color, possible_moves[i])) {
+            count--;
+        }
+    }
+    if (count == 0) {
+        return true;
+    } else {
+        return false;
+    }
 }
