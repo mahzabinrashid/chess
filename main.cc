@@ -28,17 +28,28 @@ int main() {
             int read_initial_row, read_final_row, initial_row, final_row, initial_col, final_col;
             cin >> read_initial_col >> read_initial_row >> read_final_col >> read_final_row;
             
-            initial_col = get_row_int(read_initial_col);
-            final_col = get_row_int(read_final_col);
+            initial_col = get_col_int(read_initial_col);
+            final_col = get_col_int(read_final_col);
             initial_row = read_initial_row - 1;
             final_row = read_final_row - 1;
             
             if (!(b.correct_command(read_initial_col, read_initial_row, read_final_col, read_final_row))) {
                 cout << "Incorrect position" << endl;
-            } else if (!(b.is_valid(initial_col, initial_row, final_col, final_row))) {
+            } else if (!(b.is_valid(initial_col, initial_row, final_col, final_row)) && b.becomes_check == false) {
                 cout << "Cannot move piece there" << endl;
+            } else if (!(b.is_valid(initial_col, initial_row, final_col, final_row)) && b.becomes_check == true) {
+                cout << "Cannot move King, will be in check" << endl;
             } else {
                 b.update_board(initial_col, initial_row, final_col, final_row);
+
+                if (b.is_check(initial_col, initial_row, final_col, final_row)) {
+                    if (b.is_checkmate(final_col, final_row)) {
+                        cout << "Checkmate, game over" << endl;
+                        return 0;
+                    } else {
+                        cout << "You are in check" << endl;
+                    }
+                }
             }
         }
     }
