@@ -10,6 +10,10 @@ bool Player::is_white_player() {
      return white_player;
  };
 
+ void Player::set_white_player(bool wp) {
+    white_player = wp;
+ };
+
 bool Player::is_human() {
     return human;
 };  
