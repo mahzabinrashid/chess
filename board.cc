@@ -60,7 +60,6 @@ void Board::setup_board() {
     current_player = players[0];
     print(board);
 }
-
 bool Board::valid_setup() {
     // ALSO neither king is in check! (not implemented)
     bool valid;
@@ -116,7 +115,7 @@ Player Board::get_current_player() {
     return current_player;
 }
 
-void Board::create_board(bool p1_human, bool p2_human, int p1_level, int p2_level) {
+void Board::create_board() {
     // creates the initial checkerboard
     print_initial_board();
     for (int i = 0; i < 8; i++) {
@@ -150,11 +149,14 @@ void Board::create_board(bool p1_human, bool p2_human, int p1_level, int p2_leve
     for (int i = 0; i < 8; i++) {
         board[1][i] = Square(6, i, new Piece("P",true));
     }
+    print(board);
+}
+
+void Board::initialise_players(bool p1_human, bool p2_human, int p1_level, int p2_level) {
     // initialising the 2 players
     players.emplace_back(Player(true, p1_human, p1_level));
     players.emplace_back(Player(false, p2_human, p2_level));
     current_player = players[0];
-    print(board);
 }
 
 bool Board::correct_player(int col_i, int row_i) {

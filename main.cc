@@ -27,11 +27,13 @@ int main() {
     int p2_level = 0;   
     int score_w = 0;
     int score_b = 0;
-    bool manual_setup = true;
+    bool manual_setup = false;
+    bool not_custom_b = true;
     bool setup = false;
     while (cin >> command) {
         if (command == "setup") { 
-            if (manual_setup == true) {
+            manual_setup = true;
+            if (not_custom_b == true) {
                 b.setup_board(); 
                 setup = true;
             } else {
@@ -49,7 +51,18 @@ int main() {
             } else {
                 cout << "Enter setup mode by typing 'setup' to enter setup mode before using this command." << endl;
             }       
-        } else if (command == "=") {
+        } else if (command == "-") { 
+            if (setup == true) {
+                    char read_col;
+                    int read_row, final_row, final_col;
+                    cin >> read_col >> read_row;
+                    final_col = get_col_int(read_col);
+                    final_row = read_row - 1;
+                    b.delete_piece(final_col, final_row);
+            } else {
+                cout << "Enter setup mode by typing 'setup' to enter setup mode before using this command." << endl; 
+            }
+        }   else if (command == "=") {
             if (setup == true) {
                 string colour;
                 bool wp;
@@ -63,28 +76,18 @@ int main() {
             } else {
                 cout << "Enter setup mode by typing 'setup' to enter setup mode before using this command." << endl; 
             }
-        } else if (command == "-") { 
-            if (setup == true) {
-                char read_col;
-                int read_row, final_row, final_col;
-                cin >> read_col >> read_row;
-                final_col = get_col_int(read_col);
-                final_row = read_row - 1;
-                b.delete_piece(final_col, final_row);
-            } else {
-                cout << "Enter setup mode by typing 'setup' to enter setup mode before using this command." << endl; 
-            }
         } else if (command == "done") {
             if (b.valid_setup()) {
-                cout << "Setup successfully completed." << endl;
+                cout << "Setup successfully completed. Now you can start a game." << endl;
             } else {
                 cout << "Please ensure you meet the criteria for a valid setup." << endl;
             }
-        } else if (command == "game") {
-            manual_setup = false;
+        } else if (command == "game") {   
             string player_1, player_2;
             cin >>  player_1 >> player_2;
-            string ai ("computer");
+            if (player_1 == "human" || player_1 == "computer[1]" || player_1 == "computer[2]" || player_1 == "computer[3]"
+            || player_2 == "human" || player_2 == "computer[1]" || player_2 == "computer[2]" || player_2 == "computer[3]") {
+                string ai ("computer");
             if (player_1.find(ai) != string::npos) {
                 p1_human = false; // player computer
                 char l = player_1.at(9);
@@ -95,7 +98,18 @@ int main() {
                 char l = player_2.at(9);
                 p2_level = l - '0';
             } 
-            b.create_board(p1_human, p2_human, p1_level, p2_level);
+            if (manual_setup == false) {
+                not_custom_b = false;
+                b.create_board();
+                b.initialise_players(p1_human, p2_human, p1_level, p2_level);
+            } else {
+                cout << "Play your move." << endl;
+                b.initialise_players(p1_human, p2_human, p1_level, p2_level);
+            }
+            
+            } else {
+                cout << "Invalid players." << endl;
+            }
         } else if (command == "move") {
             char read_initial_col, read_final_col;
             int read_initial_row, read_final_row, initial_row, final_row, initial_col, final_col;
@@ -121,7 +135,8 @@ int main() {
             } else {
                 score_w++;
             }
-            break;
+        } else {
+            cout << "Command not found." << endl;
         }
     }
     cout << "Final Score:" << endl;
