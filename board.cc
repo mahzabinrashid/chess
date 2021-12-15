@@ -834,9 +834,9 @@ bool Board::black_pawn_promotion(int col_i, int row_i, int col_f, int row_f) {
 }
 
 void Board::replace_pawn(string piece, int col_f, int row_f) {
-    board[row_f][col_f].get_piece()->get_name();
+    bool w = board[row_f][col_f].get_piece()->is_white();
     delete board[row_f][col_f].get_piece();
-    board[row_f][col_f] = Square(row_f, col_f, new Piece(piece, false));
+    board[row_f][col_f] = Square(row_f, col_f, new Piece(piece, w));
 }
 
 // destructor
