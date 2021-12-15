@@ -138,7 +138,7 @@ int main() {
           cin >> piece;
           b.replace_pawn(piece, final_col, final_row);     
       }
-      if ((b.get_current_player().is_white() == false) && (b.black_pawn_promotion(initial_col, initial_row, final_col, final_row))) {
+      if (!b.get_current_player().is_white() && (b.black_pawn_promotion(initial_col, initial_row, final_col, final_row))) {
           cin >> piece;
           b.replace_pawn(piece, final_col, final_row);  
       }
