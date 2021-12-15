@@ -169,20 +169,26 @@ int main() {
         }
         b.update_board(initial_col, initial_row, final_col, final_row);
         bool white = b.get_current_player().is_white();
-        if (b.is_stalemate(white)) {
+        if (b.is_check(white)) {
+            if (b.is_checkmate(white)) {
+              if (white == true) {
+                cout << "Checkmate! Black Wins" << endl;
+                score_b += 1;
+              } else {
+                cout << "Checkmate! White Wins" << endl;
+                score_w += 1;
+              }
+              return 0;
+            } else {
+                cout << "You are in check" << endl;
+                }
+          } else if (b.is_stalemate(white)) {
           cout << "Stalemate!" << endl;
           cout << "Start a new game." << endl;
           score_w += 0.5;
           score_b += 0.5;
           game_called = false;
-        } else if (b.is_check(white)) {
-            if (b.is_checkmate(final_col, final_row)) {
-                cout << "Checkmate!" << endl;
-                return 0;
-            } else {
-                cout << "You are in check" << endl;
-                }
-            }
+        }
         }
       } else {
         cout << "Start a new game before making a move." << endl;

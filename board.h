@@ -50,7 +50,7 @@ class Board {
     bool will_be_check(string name, bool white, string final_pos); // checks if the king will be in check after being moved
 
     // checkmate
-    bool is_checkmate(int col, int row); 
+    bool is_checkmate(bool white); 
     // check features remaining: i) opposition piece cannot move because king will be in check (ii) king still in checkmate even if it can capture opposition piece
 
     // stalemate
