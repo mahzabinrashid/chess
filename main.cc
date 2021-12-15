@@ -183,6 +183,9 @@ int main() {
                 score_w += 1;
               }
               game_called = false;
+              Board c;
+              b = c;
+              cout << "Start a new game." << endl;
             } else {
                 cout << "You are in check" << endl;
                 }
@@ -192,6 +195,9 @@ int main() {
           score_w += 0.5;
           score_b += 0.5;
           game_called = false;
+          Board c;
+          b = c;
+          cout << "Start a new game." << endl;
         }
         }
       } else {
@@ -205,6 +211,8 @@ int main() {
         score_w++;
       }
       game_called = false;
+      Board c;
+      b = c;
       cout << "Start a new game." << endl;
     } else if (command == "exit") {
       break;
