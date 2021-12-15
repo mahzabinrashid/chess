@@ -10,15 +10,21 @@ using namespace std;
 
 class Player {
     protected: 
-    bool white_player;
+    bool white;
     bool human;
     int level;
     public:
-    Player(bool white_player, bool human, int level); //constructor
-    bool is_white_player();
-    bool is_human();  
+    Player(bool white, bool human, int level); // constructor
+
+    void set_white(bool w);
+    bool is_white();
+
+    void set_human(bool h); 
+    bool is_human(); 
+
+    void set_level(int l); 
     int get_level();
-    void set_white_player(bool wp);
-    ~Player(); //destructor
+    
+    ~Player(); // destructor
 };
 #endif

@@ -2,8 +2,7 @@
 #include "piece.h"
 
 Square::Square(int row, int col, Piece *piece)
-: row{row}, col{col}, piece{piece} {
-}
+: row{row}, col{col}, piece{piece} {}
 
 Piece* Square::get_piece() {
     return piece;
@@ -28,3 +27,5 @@ int Square::get_col() {
 void Square::set_col(int theCol) {
     col = theCol;
 }
+
+Square::~Square() {};

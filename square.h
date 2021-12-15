@@ -11,7 +11,7 @@ class Square {
 	int col;
     Piece* piece;
     public:
-    Square(int row, int col, Piece* piece);
+    Square(int row, int col, Piece* piece); // constructor
 
     Piece* get_piece();
     void set_piece(Piece* p);
@@ -21,6 +21,8 @@ class Square {
     
     int get_col();
     void set_col(int y);
+
+     ~Square(); // destructor
 };
 
 #endif

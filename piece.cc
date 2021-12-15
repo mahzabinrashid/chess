@@ -21,6 +21,8 @@ void Piece::set_white(bool theWhite) {
     white = theWhite;
 }
 
+Piece::~Piece() {}
+
 
 
 
