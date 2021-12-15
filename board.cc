@@ -237,12 +237,12 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
     }
     // capturing using pawn
     if (col_i != 7) {
-      if (!(board[row_i - 1][col_i + 1].get_piece() -> get_name() == "empty") && board[row_i + 1][col_i + 1].get_piece() -> is_white() == true) {
+      if (!(board[row_i - 1][col_i + 1].get_piece() -> get_name() == "empty") && board[row_i - 1][col_i + 1].get_piece() -> is_white() == true) {
         moves.emplace_back(board_coordinates(col_i + 1, row_i - 1));
       }
     }
     if (col_i != 0) {
-      if (!(board[row_i - 1][col_i - 1].get_piece() -> get_name() == "empty") && board[row_i + 1][col_i - 1].get_piece() -> is_white() == true) {
+      if (!(board[row_i - 1][col_i - 1].get_piece() -> get_name() == "empty") && board[row_i - 1][col_i - 1].get_piece() -> is_white() == true) {
         moves.emplace_back(board_coordinates(col_i - 1, row_i - 1));
       }
     }
@@ -268,19 +268,19 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
       }
     }
     // moves (x-2),(y+1)
-    if (row_i != 7 && col_i - 2 > 0) {
+    if (row_i != 7 && col_i - 2 >= 0) {
       if (board[row_i + 1][col_i - 2].get_piece() -> get_name() == "empty" || board[row_i + 1][col_i - 2].get_piece() -> is_white() == false) {
         moves.emplace_back(board_coordinates(col_i - 2, row_i + 1));
       }
     }
     // moves (x+1),(y-2)
-    if (row_i - 2 > 0 && col_i != 7) {
+    if (row_i - 2 >= 0 && col_i != 7) {
       if (board[row_i - 2][col_i + 1].get_piece() -> get_name() == "empty" || board[row_i - 2][col_i + 1].get_piece() -> is_white() == false) {
         moves.emplace_back(board_coordinates(col_i + 1, row_i - 2));
       }
     }
     // moves (x-1),(y-2)
-    if (row_i - 2 > 0 && col_i != 0) {
+    if (row_i - 2 >= 0 && col_i != 0) {
       if (board[row_i - 2][col_i - 1].get_piece() -> get_name() == "empty" || board[row_i - 2][col_i - 1].get_piece() -> is_white() == false) {
         moves.emplace_back(board_coordinates(col_i - 1, row_i - 2));
       }
@@ -292,7 +292,7 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
       }
     }
     // moves (x-2),(y-1)
-    if (row_i != 0 && col_i - 2 > 0) {
+    if (row_i != 0 && col_i - 2 >= 0) {
       if (board[row_i - 1][col_i - 2].get_piece() -> get_name() == "empty" || board[row_i - 1][col_i - 2].get_piece() -> is_white() == false) {
         moves.emplace_back(board_coordinates(col_i - 2, row_i - 1));
       }
@@ -319,19 +319,19 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
       }
     }
     // moves (x-2),(y+1)
-    if (row_i != 7 && col_i - 2 > 0) {
+    if (row_i != 7 && col_i - 2 >= 0) {
       if (board[row_i + 1][col_i - 2].get_piece() -> get_name() == "empty" || board[row_i + 1][col_i - 2].get_piece() -> is_white() == true) {
         moves.emplace_back(board_coordinates(col_i - 2, row_i + 1));
       }
     }
     // moves (x+1),(y-2)
-    if (row_i - 2 > 0 && col_i != 7) {
+    if (row_i - 2 >= 0 && col_i != 7) {
       if (board[row_i - 2][col_i + 1].get_piece() -> get_name() == "empty" || board[row_i - 2][col_i + 1].get_piece() -> is_white() == true) {
         moves.emplace_back(board_coordinates(col_i + 1, row_i - 2));
       }
     }
     // moves (x-1),(y-2)
-    if (row_i - 2 > 0 && col_i != 0) {
+    if (row_i - 2 >= 0 && col_i != 0) {
       if (board[row_i - 2][col_i - 1].get_piece() -> get_name() == "empty" || board[row_i - 2][col_i - 1].get_piece() -> is_white() == true) {
         moves.emplace_back(board_coordinates(col_i - 1, row_i - 2));
       }
@@ -343,7 +343,7 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
       }
     }
     // moves (x-2),(y-1)
-    if (row_i != 0 && col_i - 2 > 0) {
+    if (row_i != 0 && col_i - 2 >= 0) {
       if (board[row_i - 1][col_i - 2].get_piece() -> get_name() == "empty" || board[row_i - 1][col_i - 2].get_piece() -> is_white() == true) {
         moves.emplace_back(board_coordinates(col_i - 2, row_i - 1));
       }
@@ -363,7 +363,7 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
       }
     }
     // checks movements vertically downwards
-    for (int i = row_i - 1; i > 0; --i) {
+    for (int i = row_i - 1; i >= 0; --i) {
       if (board[i][col_i].get_piece() -> get_name() == "empty") {
         moves.emplace_back(board_coordinates(col_i, i));
       } else if (board[i][col_i].get_piece() -> is_white() == false) {
@@ -385,7 +385,7 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
       }
     }
     // checks movements leftwards
-    for (int i = col_i - 1; i > 0; --i) {
+    for (int i = col_i - 1; i >= 0; --i) {
       if (board[row_i][i].get_piece() -> get_name() == "empty") {
         moves.emplace_back(board_coordinates(i, row_i));
       } else if (board[row_i][i].get_piece() -> is_white() == false) {
@@ -410,7 +410,7 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
       }
     }
     // checks movements vertically downwards
-    for (int i = row_i - 1; i > 0; --i) {
+    for (int i = row_i - 1; i >= 0; --i) {
       if (board[i][col_i].get_piece() -> get_name() == "empty") {
         moves.emplace_back(board_coordinates(col_i, i));
       } else if (board[i][col_i].get_piece() -> is_white() == true) {
@@ -432,7 +432,7 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
       }
     }
     // checks movements leftwards
-    for (int i = col_i - 1; i > 0; --i) {
+    for (int i = col_i - 1; i >= 0; --i) {
       if (board[row_i][i].get_piece() -> get_name() == "empty") {
         moves.emplace_back(board_coordinates(i, row_i));
       } else if (board[row_i][i].get_piece() -> is_white() == true) {
@@ -457,7 +457,7 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
       }
     }
     // checks movements diagonally to the left and upwards
-    for (int i = row_i + 1, j = col_i - 1; i < 8 && j > 0; ++i, --j) {
+    for (int i = row_i + 1, j = col_i - 1; i < 8 && j >= 0; ++i, --j) {
       if (board[i][j].get_piece() -> get_name() == "empty") {
         moves.emplace_back(board_coordinates(j, i));
       } else if (board[i][j].get_piece() -> is_white() == false) {
@@ -468,7 +468,7 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
       }
     }
     // checks movements diagonally downwards and rightwards
-    for (int i = row_i - 1, j = col_i + 1; i > 0 && j < 8; --i, ++j) {
+    for (int i = row_i - 1, j = col_i + 1; i >= 0 && j < 8; --i, ++j) {
       if (board[i][j].get_piece() -> get_name() == "empty") {
         moves.emplace_back(board_coordinates(j, i));
       } else if (board[i][j].get_piece() -> is_white() == false) {
@@ -479,7 +479,7 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
       }
     }
     // checks movements diagonally downwards and leftwards
-    for (int i = row_i - 1, j = col_i - 1; i > 0 && j > 0; --i, --j) {
+    for (int i = row_i - 1, j = col_i - 1; i >= 0 && j >= 0; --i, --j) {
       if (board[i][j].get_piece() -> get_name() == "empty") {
         moves.emplace_back(board_coordinates(j, i));
       } else if (board[i][j].get_piece() -> is_white() == false) {
@@ -504,7 +504,7 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
       }
     }
     // checks movements diagonally to the left and upwards
-    for (int i = row_i + 1, j = col_i - 1; i < 8 && j > 0; ++i, --j) {
+    for (int i = row_i + 1, j = col_i - 1; i < 8 && j >= 0; ++i, --j) {
       if (board[i][j].get_piece() -> get_name() == "empty") {
         moves.emplace_back(board_coordinates(j, i));
       } else if (board[i][j].get_piece() -> is_white() == true) {
@@ -515,7 +515,7 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
       }
     }
     // checks movements diagonally downwards and rightwards
-    for (int i = row_i - 1, j = col_i + 1; i > 0 && j < 8; --i, ++j) {
+    for (int i = row_i - 1, j = col_i + 1; i >= 0 && j < 8; --i, ++j) {
       if (board[i][j].get_piece() -> get_name() == "empty") {
         moves.emplace_back(board_coordinates(j, i));
       } else if (board[i][j].get_piece() -> is_white() == true) {
@@ -526,7 +526,7 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
       }
     }
     // checks movements diagonally downwards and leftwards
-    for (int i = row_i - 1, j = col_i - 1; i > 0 && j > 0; --i, --j) {
+    for (int i = row_i - 1, j = col_i - 1; i >= 0 && j >= 0; --i, --j) {
       if (board[i][j].get_piece() -> get_name() == "empty") {
         moves.emplace_back(board_coordinates(j, i));
       } else if (board[i][j].get_piece() -> is_white() == true) {
@@ -812,6 +812,81 @@ bool Board::is_checkmate(int col, int row) {
   } else {
     return false;
   }
+}
+
+bool Board::is_stalemate(bool white) {
+    if (white == true) {
+        vector < string > all_moves;
+        vector < string > king_moves;
+        for (int i = 0; i < 8; ++i) {
+            for (int j = 0; j < 8; ++j) {
+                if (board[i][j].get_piece() -> is_white() == true && board[i][j].get_piece() -> get_name() != "empty") {
+                    string temp_name = board[i][j].get_piece() -> get_name();
+                    if (temp_name == "K") {
+                        vector < string > temp = valid_moves(temp_name, j, i, j, i);
+                        for (int k = 0; k < temp.size(); k++) {
+                            king_moves.emplace_back(temp[k]);
+                        }
+                    } else {
+                        vector < string > temp = valid_moves(temp_name, j, i, j, i);
+                        for (int k = 0; k < temp.size(); ++k) {
+                            all_moves.emplace_back(temp[k]);                          
+                        }
+                    }
+                }
+            }
+        }
+        int count = 0;
+        if (all_moves.size() == 0) {
+            for (int i = 0; i < king_moves.size(); i++) {
+                cout << king_moves[i] << endl;
+                if (!(will_be_check("K", true, king_moves[i]))) {
+                    count++;
+                }
+            }
+        } else {
+            count++;
+        }
+        if (count == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        vector < string > all_moves;
+        vector < string > king_moves;
+        for (int i = 0; i < 8; ++i) {
+            for (int j = 0; j < 8; ++j) {
+                if (board[i][j].get_piece() -> is_white() == false && board[i][j].get_piece() -> get_name() != "empty") {
+                    string temp_name = board[i][j].get_piece() -> get_name();
+                    if (temp_name == "k") {
+                        vector < string > temp = valid_moves(temp_name, j, i, j, i);
+                        for (int k = 0; k < temp.size(); k++) {
+                            king_moves.emplace_back(temp[k]);
+                        }
+                    } else {
+                        vector < string > temp = valid_moves(temp_name, j, i, j, i);
+                        for (int k = 0; k < temp.size(); ++k) {
+                            all_moves.emplace_back(temp[k]);
+                        }
+                    }
+                }
+            }
+        }
+        int count = 0;
+        if (all_moves.size() == 0) {
+            for (int i = 0; i < king_moves.size(); i++) {
+                if (!(will_be_check("k", true, king_moves[i]))) {
+                    count++;
+                }
+            }
+        }
+        if (count == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 // destructor

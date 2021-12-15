@@ -145,16 +145,20 @@ int main() {
         cout << "Cannot move King, will be in check" << endl;
       } else {
         b.update_board(initial_col, initial_row, final_col, final_row);
-
-        if (b.is_check(initial_col, initial_row, final_col, final_row)) {
-          if (b.is_checkmate(final_col, final_row)) {
-            cout << "Checkmate, game over" << endl;
-            return 0;
-          } else {
-            cout << "You are in check" << endl;
-          }
+        bool white = b.get_current_player().is_white();
+        if (b.is_stalemate(white)) {
+          cout << "Stalemate!" << endl;
+          score_w += 0.5;
+          score_b += 0.5;
+        } else if (b.is_check(initial_col, initial_row, final_col, final_row)) {
+            if (b.is_checkmate(final_col, final_row)) {
+                cout << "Checkmate!" << endl;
+                return 0;
+            } else {
+                cout << "You are in check" << endl;
+                }
+            }
         }
-      }
     } else if (command == "resign") {
       if (b.get_current_player().is_white() == true) {
         score_b++;

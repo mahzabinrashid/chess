@@ -50,6 +50,9 @@ class Board {
     bool is_checkmate(int col, int row); 
     // check features remaining: i) opposition piece cannot move because king will be in check (ii) king still in checkmate even if it can capture opposition piece
 
+    // stalemate
+    bool is_stalemate(bool white);
+
     ~Board(); //destructor
 };
 
