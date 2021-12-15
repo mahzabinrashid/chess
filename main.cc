@@ -133,15 +133,13 @@ int main() {
       initial_row = read_initial_row - 1;
       final_row = read_final_row - 1;
 
-      /*string piece;
-      if (b.get_current_player().is_white() && (b.white_pawn_promotion(initial_col, initial_row, final_col, final_row))) {
-          cin >> piece;
-          b.replace_pawn(piece, final_col, final_row);     
+      string piece;
+      if (b.get_current_player().is_white() == true && b.white_pawn_promotion(initial_col, initial_row)) {
+          cin >> piece;     
       }
-      if ((b.get_current_player().is_white() == false) && (b.black_pawn_promotion(initial_col, initial_row, final_col, final_row))) {
-          cin >> piece;
-          b.replace_pawn(piece, final_col, final_row);  
-      }*/
+      if (b.get_current_player().is_white() == false && b.black_pawn_promotion(initial_col, initial_row)) {
+          cin >> piece; 
+      }
       
       if (!(b.correct_command(read_initial_col, read_initial_row, read_final_col, read_final_row))) {
         cout << "Incorrect position" << endl;
@@ -154,6 +152,15 @@ int main() {
       } else if (!(b.is_valid(initial_col, initial_row, final_col, final_row)) && b.becomes_check == true) {
         cout << "Cannot move King, will be in check" << endl;
       } else {
+        if (b.w_pawn_promotion == true) {
+          bool white = true;
+          b.replace_pawn(piece, white, initial_col, initial_row);
+          b.w_pawn_promotion = false;
+        } else if (b.b_pawn_promotion == true) {
+          bool white = false;
+          b.replace_pawn(piece, white, final_col, final_row);
+          b.b_pawn_promotion = false;
+        }
         b.update_board(initial_col, initial_row, final_col, final_row);
         bool white = b.get_current_player().is_white();
         if (b.is_stalemate(white)) {
