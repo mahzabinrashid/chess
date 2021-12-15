@@ -22,8 +22,3 @@ void Piece::set_white(bool theWhite) {
 }
 
 Piece::~Piece() {}
-
-
-
-
-
