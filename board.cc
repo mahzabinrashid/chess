@@ -125,7 +125,6 @@ void Board::setup_board() {
 }
 
 bool Board::valid_setup() {
-  // ALSO neither king is in check! (not implemented)
   bool valid;
   int wk = 0;
   int bk = 0;
@@ -143,6 +142,10 @@ bool Board::valid_setup() {
   if ((wk == 1) && (bk == 1)) {
     valid = true;
   } else {
+    valid = false;
+  }
+  // no kings are in check
+  if (is_check(true) || is_check(false)) {
     valid = false;
   }
   // no pawns are on the first or last row of the board
