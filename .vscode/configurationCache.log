@@ -1,1 +1,1 @@
-{"buildTargets":[".PHONY","board.o","chess","clean","main.o","make.exe","piece.o","player.o","square.o"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
+{"buildTargets":[".PHONY","board.o","chess","clean","main.o","piece.o","player.o","square.o"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}

@@ -208,12 +208,17 @@ void Board::set_current_player(bool white) {
 
 // valid moves
 vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_f, int row_f) {
+  b_pawn_promotion = false;
+  w_pawn_promotion = false;
   vector < string > moves;
   // white pawn
   if (name == "P") {
     // checks if pawn can move forward
-    if (board[row_i + 1][col_i].get_piece() -> get_name() == "empty") {
+    if (row_i != 7 && board[row_i + 1][col_i].get_piece() -> get_name() == "empty") {
       moves.emplace_back(board_coordinates(col_i, row_i + 1));
+      if (row_i == 6) {
+        w_pawn_promotion = true;
+      }
     }
     // checks if pawn can move forward two steps from the starting position
     if (row_i == 1 && board[row_i + 2][col_i].get_piece() -> get_name() == "empty") {
@@ -230,13 +235,15 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
         moves.emplace_back(board_coordinates(col_i - 1, row_i + 1));
       }
     }
-
   }
   // black pawn
   if (name == "p") {
     // checks if pawn can move forward
-    if (board[row_i - 1][col_i].get_piece() -> get_name() == "empty") {
+    if (row_i != 0 && board[row_i - 1][col_i].get_piece() -> get_name() == "empty") {
       moves.emplace_back(board_coordinates(col_i, row_i - 1));
+      if (row_i == 1) {
+        b_pawn_promotion = true;
+      }
     }
     // checks if pawn can move forward two steps from the starting position
     if (row_i == 6 && board[row_i - 2][col_i].get_piece() -> get_name() == "empty") {
@@ -874,7 +881,6 @@ bool Board::is_stalemate(bool white) {
         int count = 0;
         if (all_moves.size() == 0) {
             for (int i = 0; i < king_moves.size(); i++) {
-                cout << king_moves[i] << endl;
                 if (!(will_be_check("K", true, king_moves[i]))) {
                     count++;
                 }
@@ -911,7 +917,7 @@ bool Board::is_stalemate(bool white) {
         int count = 0;
         if (all_moves.size() == 0) {
             for (int i = 0; i < king_moves.size(); i++) {
-                if (!(will_be_check("k", true, king_moves[i]))) {
+                if (!(will_be_check("k", false, king_moves[i]))) {
                     count++;
                 }
             }
@@ -926,8 +932,8 @@ bool Board::is_stalemate(bool white) {
     }
 }
 // pawn promotion
-/*bool Board::white_pawn_promotion(int col_i, int row_i, int col_f, int row_f) {
-    if ((row_i == 6) && (row_f == 7)) {
+bool Board::white_pawn_promotion(int col_i, int row_i) {
+    if (row_i == 6) {
         if (board[row_i][col_i].get_piece()->get_name() == "P") {
             return true;
         }
@@ -935,8 +941,8 @@ bool Board::is_stalemate(bool white) {
     return false;
 }
 
-bool Board::black_pawn_promotion(int col_i, int row_i, int col_f, int row_f) {
-    if ((row_i == 1) && (row_f == 0)) {
+bool Board::black_pawn_promotion(int col_i, int row_i) {
+    if (row_i == 1) {
         if (board[row_i][col_i].get_piece()->get_name() == "p") {
            return true;
         }
@@ -944,11 +950,10 @@ bool Board::black_pawn_promotion(int col_i, int row_i, int col_f, int row_f) {
     return false;
 }
 
-void Board::replace_pawn(string piece, int col_f, int row_f) {
-    board[row_f][col_f].get_piece()->get_name();
+void Board::replace_pawn(string piece, bool white,int col_f, int row_f) {
     delete board[row_f][col_f].get_piece();
-    board[row_f][col_f] = Square(row_f, col_f, new Piece(piece, false));
-}*/
+    board[row_f][col_f] = Square(row_f, col_f, new Piece(piece, white));
+}
 
 // destructor
 Board::~Board() {
