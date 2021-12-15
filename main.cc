@@ -35,8 +35,8 @@ int main() {
   bool not_custom_b = true;
 
   // scoreboard
-  int score_w = 0;
-  int score_b = 0;
+  float score_w = 0;
+  float score_b = 0;
 
   // new game started before calling move
   bool game_called = false;
