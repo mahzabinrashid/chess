@@ -35,8 +35,11 @@ int main() {
   bool not_custom_b = true;
 
   // scoreboard
-  int score_w = 0;
-  int score_b = 0;
+  float score_w = 0;
+  float score_b = 0;
+
+  // new game started before calling move
+  bool game_called = false;
 
   string command;
   while (cin >> command) {
@@ -96,6 +99,7 @@ int main() {
         cout << "Enter setup mode by typing 'setup' to enter setup mode before using this command." << endl;
       }
     } else if (command == "game") {
+      game_called = true;
       string player_1, player_2;
       cin >> player_1 >> player_2;
       if ((player_1 == "human" || player_1 == "computer[1]" || player_1 == "computer[2]" || player_1 == "computer[3]") &&
@@ -122,9 +126,10 @@ int main() {
 
       } else {
         cout << "Invalid players." << endl;
-      }
+      }  
     } else if (command == "move") {
-      char read_initial_col, read_final_col;
+      if (game_called) {
+        char read_initial_col, read_final_col;
       int read_initial_row, read_final_row, initial_row, final_row, initial_col, final_col;
       cin >> read_initial_col >> read_initial_row >> read_final_col >> read_final_row;
 
@@ -165,8 +170,10 @@ int main() {
         bool white = b.get_current_player().is_white();
         if (b.is_stalemate(white)) {
           cout << "Stalemate!" << endl;
+          cout << "Start a new game." << endl;
           score_w += 0.5;
           score_b += 0.5;
+          game_called = false;
         } else if (b.is_check(white)) {
             if (b.is_checkmate(final_col, final_row)) {
                 cout << "Checkmate!" << endl;
@@ -176,15 +183,20 @@ int main() {
                 }
             }
         }
+      } else {
+        cout << "Start a new game before making a move." << endl;
+      }
+      
     } else if (command == "resign") {
       if (b.get_current_player().is_white() == true) {
         score_b++;
       } else {
         score_w++;
       }
+      game_called = false;
+      cout << "Start a new game." << endl;
     } else if (command == "exit") {
       break;
-
     } else {
       cout << "Command not found." << endl;
     }
