@@ -240,6 +240,7 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
   if (name == "p") {
     // checks if pawn can move forward
     if (row_i != 0 && board[row_i - 1][col_i].get_piece() -> get_name() == "empty") {
+      
       moves.emplace_back(board_coordinates(col_i, row_i - 1));
       if (row_i == 1) {
         b_pawn_promotion = true;

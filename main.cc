@@ -164,7 +164,7 @@ int main() {
           b.w_pawn_promotion = false;
         } else if (b.b_pawn_promotion == true) {
           bool white = false;
-          b.replace_pawn(piece, white, final_col, final_row);
+          b.replace_pawn(piece, white, initial_col, initial_row);
           b.b_pawn_promotion = false;
         }
         b.update_board(initial_col, initial_row, final_col, final_row);
