@@ -129,7 +129,11 @@ int main() {
         cout << "Invalid players." << endl;
       }  
     } else if (command == "move") {
-      if (game_called) {
+      if (b.get_current_player().is_human() == 0) {
+        cout << "compsturn";
+        b.level_1(b.get_current_player().is_white());
+      } else {
+        if (game_called) {
         char read_initial_col, read_final_col;
       int read_initial_row, read_final_row, initial_row, final_row, initial_col, final_col;
       cin >> read_initial_col >> read_initial_row >> read_final_col >> read_final_row;
@@ -193,6 +197,7 @@ int main() {
       } else {
         cout << "Start a new game before making a move." << endl;
       }  
+      }
     } else if (command == "resign") {
       if (b.get_current_player().is_white() == true) {
         score_b++;
