@@ -124,13 +124,15 @@ int main(int argc, char * argv[]) {
         cout << "Invalid players." << endl;
       }
     } else if (command == "move") {
-        if (argc == 1) {
-            // check if comp is white/black?
-            b.level_1(true);
+        cout << command.length();
+        if (command.length() == 4) {
+            cout << "hi";
+     //       b.level_1(true);
         } else {
-            char read_initial_col, read_final_col;
-      int read_initial_row, read_final_row, initial_row, final_row, initial_col, final_col;
-      cin >> read_initial_col >> read_initial_row >> read_final_col >> read_final_row;
+        cout << "bye";
+        char read_initial_col, read_final_col;
+        int read_initial_row, read_final_row, initial_row, final_row, initial_col, final_col;
+        cin >> read_initial_col >> read_initial_row >> read_final_col >> read_final_row;
 
       initial_col = get_col_int(read_initial_col);
       final_col = get_col_int(read_final_col);

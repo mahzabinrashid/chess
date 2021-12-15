@@ -875,6 +875,7 @@ void Board::level_1(bool white) {
     vector <string> available_moves = valid_moves(s.get_piece()->get_name(), s.get_col(), s.get_row(), 0, 0);
     int y = rand() % (available_moves.size() + 1);
     int row = available_moves[y][1] - '0' - 1;
+    cout << s.get_col() << s.get_row() <<  get_colm_int(available_moves[y][0]) << row << endl;
     update_board(s.get_col(), s.get_row(), get_colm_int(available_moves[y][0]), row);
 }
 
