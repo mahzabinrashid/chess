@@ -33,6 +33,7 @@ int main() {
   bool setup = false;
   bool manual_setup = false;
   bool not_custom_b = true;
+  bool wp;
 
   // scoreboard
   float score_w = 0;
@@ -77,14 +78,13 @@ int main() {
     } else if (command == "=") { 
       if (setup == true) {
         string colour;
-        bool wp;
+        
         cin >> colour;
         if (colour == "white") {
           wp = true;
         } else {
           wp = false;
         }
-        b.change_current_player(wp);
       } else {
         cout << "Enter setup mode by typing 'setup' to enter setup mode before using this command." << endl;
       }
@@ -122,6 +122,7 @@ int main() {
         } else {
           cout << "Play your move." << endl;
           b.initialise_players(p1_human, p2_human, p1_level, p2_level);
+          b.change_current_player(wp);
         }
 
       } else {
