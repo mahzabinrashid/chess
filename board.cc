@@ -912,6 +912,8 @@ bool Board::is_stalemate(bool white) {
                     count++;
                 }
             }
+        } else {
+          count++;
         }
         if (count == 0) {
             return true;
