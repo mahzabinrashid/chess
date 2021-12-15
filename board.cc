@@ -846,7 +846,7 @@ bool Board::is_checkmate(bool white) {
     }
   }
   int count = 0;
-  for (int i = 0; i < king_moves.size(); i++) {
+  for (std::size_t i = 0; i < king_moves.size(); i++) {
     if (!(will_be_check(king, white, king_moves[i]))) {
       count++;
     }
