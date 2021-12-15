@@ -24,7 +24,6 @@ int get_col_int(char row_char) {
 }
 
 int main() {
-  cout << rand() << endl;
   Board b;
 
   // player initialisation

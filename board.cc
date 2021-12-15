@@ -976,6 +976,7 @@ bool Board::is_stalemate(bool white) {
         }
     }
 }
+
 // pawn promotion
 bool Board::white_pawn_promotion(int col_i, int row_i) {
     if (row_i == 6) {
