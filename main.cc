@@ -133,6 +133,16 @@ int main() {
       initial_row = read_initial_row - 1;
       final_row = read_final_row - 1;
 
+      string piece;
+      if (b.get_current_player().is_white() && (b.white_pawn_promotion(initial_col, initial_row, final_col, final_row))) {
+          cin >> piece;
+          b.replace_pawn(piece, final_col, final_row);     
+      }
+      if ((b.get_current_player().is_white() == false) && (b.black_pawn_promotion(initial_col, initial_row, final_col, final_row))) {
+          cin >> piece;
+          b.replace_pawn(piece, final_col, final_row);  
+      }
+      
       if (!(b.correct_command(read_initial_col, read_initial_row, read_final_col, read_final_row))) {
         cout << "Incorrect position" << endl;
       } else if (b.empty_square(initial_col, initial_row)) {

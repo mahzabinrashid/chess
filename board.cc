@@ -814,6 +814,31 @@ bool Board::is_checkmate(int col, int row) {
   }
 }
 
+// pawn promotion
+bool Board::white_pawn_promotion(int col_i, int row_i, int col_f, int row_f) {
+    if ((row_i == 6) && (row_f == 7)) {
+        if (board[row_i][col_i].get_piece()->get_name() == "P") {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Board::black_pawn_promotion(int col_i, int row_i, int col_f, int row_f) {
+    if ((row_i == 1) && (row_f == 0)) {
+        if (board[row_i][col_i].get_piece()->get_name() == "p") {
+           return true;
+        }
+    }
+    return false;
+}
+
+void Board::replace_pawn(string piece, int col_f, int row_f) {
+    board[row_f][col_f].get_piece()->get_name();
+    delete board[row_f][col_f].get_piece();
+    board[row_f][col_f] = Square(row_f, col_f, new Piece(piece, false));
+}
+
 // destructor
 Board::~Board() {
   for (std::size_t i = board.size(); i > 0; --i) {
