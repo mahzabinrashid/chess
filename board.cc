@@ -3,6 +3,8 @@
 #include "square.h"
 #include "piece.h"
 #include <vector>
+#include <stdio.h>      
+#include <stdlib.h>     
 
 using namespace std;
 
@@ -29,7 +31,19 @@ string board_coordinates(int col, int row) {
   return horizontal + vertical;
 }
 
-// move this func to addtext
+int get_colm_int(char row_char) {
+  int row_int;
+  if (row_char == 'a') row_int = 0;
+  if (row_char == 'b') row_int = 1;
+  if (row_char == 'c') row_int = 2;
+  if (row_char == 'd') row_int = 3;
+  if (row_char == 'e') row_int = 4;
+  if (row_char == 'f') row_int = 5;
+  if (row_char == 'g') row_int = 6;
+  if (row_char == 'h') row_int = 7;
+  return row_int;
+}
+
 void print(vector <vector<Square>> board) {
   string name;
   for (std::size_t i = board.size(); i > 0; --i) {
@@ -841,6 +855,27 @@ void Board::replace_pawn(string piece, int col_f, int row_f) {
     board[row_f][col_f].get_piece()->get_name();
     delete board[row_f][col_f].get_piece();
     board[row_f][col_f] = Square(row_f, col_f, new Piece(piece, false));
+}
+
+// ai
+void Board::level_1(bool white) {
+    vector <Square> pieces;
+    for (std::size_t i = board.size(); i > 0; --i) {
+      for (std::size_t j = 0; j < board[i - 1].size(); ++j) {
+          if (white && (board[i - 1][j].get_piece() ->is_white()) && (board[i - 1][j].get_piece() ->get_name() != "empty")) {
+              pieces.push_back(board[i - 1][j]);
+          }
+          if (!white && !(board[i - 1][j].get_piece() ->is_white()) && (board[i - 1][j].get_piece() ->get_name() != "empty")) {
+              pieces.push_back(board[i - 1][j]);
+          }
+      }
+    }
+    int x = rand() % 17;
+    Square s = pieces[x];
+    vector <string> available_moves = valid_moves(s.get_piece()->get_name(), s.get_col(), s.get_row(), 0, 0);
+    int y = rand() % (available_moves.size() + 1);
+    int row = available_moves[y][1] - '0' - 1;
+    update_board(s.get_col(), s.get_row(), get_colm_int(available_moves[y][0]), row);
 }
 
 // destructor

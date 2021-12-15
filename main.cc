@@ -20,7 +20,7 @@ int get_col_int(char row_char) {
   return row_int;
 }
 
-int main() {
+int main(int argc, char * argv[]) {
   Board b;
 
   // player initialisation
@@ -124,7 +124,11 @@ int main() {
         cout << "Invalid players." << endl;
       }
     } else if (command == "move") {
-      char read_initial_col, read_final_col;
+        if (argc == 1) {
+            // check if comp is white/black?
+            b.level_1(true);
+        } else {
+            char read_initial_col, read_final_col;
       int read_initial_row, read_final_row, initial_row, final_row, initial_col, final_col;
       cin >> read_initial_col >> read_initial_row >> read_final_col >> read_final_row;
 
@@ -165,6 +169,7 @@ int main() {
           }
         }
       }
+    }
     } else if (command == "resign") {
       if (b.get_current_player().is_white() == true) {
         score_b++;
@@ -173,7 +178,6 @@ int main() {
       }
     } else if (command == "exit") {
       break;
-
     } else {
       cout << "Command not found." << endl;
     }

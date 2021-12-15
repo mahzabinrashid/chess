@@ -23,7 +23,7 @@ class Board {
     // setup methods
     void put_piece(string piece, int final_col, int final_row); // +
     void delete_piece(int final_col, int final_row); // -
-    void setup_board(); // sets up an empty board and prints the board, initialises the 2 players and
+    void setup_board(); // sets up an empty board and prints the board, initialises the 2 players
     bool valid_setup(); // checks if the setup is valid
     void change_current_player(bool white);
 
@@ -55,6 +55,9 @@ class Board {
     bool white_pawn_promotion(int col_i, int row_i, int col_f, int row_f);
     bool black_pawn_promotion(int col_i, int row_i, int col_f, int row_f);
     void replace_pawn(string piece, int col_f, int row_f);
+
+    // level 1
+    void level_1(bool white);
 
     ~Board(); //destructor
 };
