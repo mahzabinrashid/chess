@@ -5,6 +5,8 @@
 #include <vector>
 #include <stdio.h>      
 #include <stdlib.h>     
+#include <time.h>    
+
 
 using namespace std;
 
@@ -748,37 +750,6 @@ bool Board::empty_square(int initial_col, int initial_row) {
 }
 
 // check
-// so far sees if there is a check after a piece has been moves by the opponent
-/*bool Board::is_check(int col_i, int row_i, int col_f, int row_f) {
-  string object = board[row_f][col_f].get_piece() -> get_name();
-  vector < string > possible_moves = valid_moves(object, col_f, row_f, col_i, row_i);
-  bool white = board[row_f][col_f].get_piece() -> is_white();
-  string king;
-  if (white == true) {
-    king = "k";
-  } else {
-    king = "K";
-  }
-  int king_row;
-  int king_col;
-  for (int i = 0; i < 8; ++i) {
-    for (int j = 0; j < 8; j++) {
-      string temp = board[i][j].get_piece() -> get_name();
-      if (temp == king) {
-        king_row = i;
-        king_col = j;
-        break;
-      }
-    }
-  }
-  string king_pos = board_coordinates(king_col, king_row);
-  for (int i = 0; i < possible_moves.size(); ++i) {
-    if (king_pos == possible_moves[i]) {
-      return true;
-    }
-  }
-  return false;
-}*/
 bool Board::is_check(bool white) {
     string king_pos;
     string king;
@@ -833,44 +804,6 @@ bool Board::will_be_check(string name, bool white, string final_pos) {
 
 // checkmate
 // requires the final position of the piece moved
-/*bool Board::is_checkmate(int col, int row) {
-  bool white = board[row][col].get_piece() -> is_white();
-  string name;
-  if (white == true) {
-    name = "k";
-  } else {
-    name = "K";
-  }
-  bool color;
-  if (name == "k") {
-    color = false;
-  } else {
-    color = true;
-  }
-  int king_row;
-  int king_col;
-  for (int i = 0; i < 8; i++) {
-    for (int j = 0; j < 8; j++) {
-      if (board[i][j].get_piece() -> get_name() == name) {
-        king_row = i;
-        king_col = j;
-        break;
-      }
-    }
-  }
-  vector < string > possible_moves = valid_moves(name, king_col, king_row, king_col, king_row);
-  int count = possible_moves.size();
-  for (int i = 0; i < count; i++) {
-    if (will_be_check(name, color, possible_moves[i])) {
-      count--;
-    }
-  }
-  if (count == 0) {
-    return true;
-  } else {
-    return false;
-  }
-}*/
 bool Board::is_checkmate(bool white) {
   string king_pos;
   string king;
@@ -1003,6 +936,9 @@ void Board::replace_pawn(string piece, bool white,int col_f, int row_f) {
 
 // ai
 void Board::level_1(bool white) {
+    /* initialize random seed: */ 
+    // taken from https://www.cplusplus.com/reference/cstdlib/rand/
+    srand (time(NULL));
     vector <Square> pieces;
     for (std::size_t i = board.size(); i > 0; --i) {
       for (std::size_t j = 0; j < board[i - 1].size(); ++j) {
@@ -1014,6 +950,7 @@ void Board::level_1(bool white) {
           }
       }
     }
+    
     int x = rand() % 16;
     Square s = pieces[x];
     vector <string> available_moves = valid_moves(s.get_piece()->get_name(), s.get_col(), s.get_row(), 0, 0);
