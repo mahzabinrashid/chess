@@ -77,10 +77,14 @@ int main() {
                 cout << "Enter setup mode by typing 'setup' to enter setup mode before using this command." << endl; 
             }
         } else if (command == "done") {
-            if (b.valid_setup()) {
-                cout << "Setup successfully completed. Now you can start a game." << endl;
+            if (setup == true) {
+                if (b.valid_setup()) {
+                    cout << "Setup successfully completed. Now you can start a game." << endl;
+                } else {
+                    cout << "Please ensure you meet the criteria for a valid setup." << endl;
+                }
             } else {
-                cout << "Please ensure you meet the criteria for a valid setup." << endl;
+                cout << "Enter setup mode by typing 'setup' to enter setup mode before using this command." << endl; 
             }
         } else if (command == "game") {   
             string player_1, player_2;
@@ -122,7 +126,10 @@ int main() {
 
             if (!(b.correct_command(read_initial_col, read_initial_row, read_final_col, read_final_row))) {
                 cout << "Incorrect position" << endl;
-            } else if (!b.correct_player(initial_col, initial_row)) {
+            } else if (b.empty_square(initial_col, initial_row)) {
+                cout << "This is an empty square. Not possible. " << endl;
+            }
+            else if (!b.correct_player(initial_col, initial_row)) {
                 cout << "Not this player's turn" << endl;
             } else if (!(b.is_valid(initial_col, initial_row, final_col, final_row))) {
                 cout << "Cannot move piece there" << endl;
@@ -146,10 +153,13 @@ int main() {
             } else {
                 score_w++;
             }
+        } else if (command == "exit") {
+            break;
+
         } else {
             cout << "Command not found." << endl;
         }
-    }
+    } 
     cout << "Final Score:" << endl;
     cout << "White:" << score_w << endl;
     cout << "Black:" << score_b << endl;    

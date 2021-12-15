@@ -52,6 +52,14 @@ void Board::delete_piece(int col_f, int row_f) {
     print(board);
 }
 
+bool Board::empty_square(int initial_col, int initial_row) {
+    if (board[initial_row][initial_col].get_piece()->get_name() == "empty") {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 void Board::setup_board() {
     print_initial_board();
     // initialising the 2 players
@@ -798,6 +806,7 @@ bool Board::is_checkmate(int col, int row) {
     } else {
         return false;
     }
+}
 
 Board::~Board() {
     for (std::size_t i = board.size(); i > 0; --i) {

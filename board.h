@@ -14,15 +14,17 @@ class Board {
     vector<Player> players;
     Player current_player{true, true, 0};
     public:
-    // setup methods 
     bool becomes_check;
+    // setup methods 
     void print_initial_board();
+    
     void initialise_players(bool p1_human, bool p2_human, int p1_level, int p2_level);
     void put_piece(string piece, int final_col, int final_row);
     void delete_piece(int final_col, int final_row);
     void setup_board();
     bool valid_setup();
     void create_board();
+    bool empty_square(int initial_col, int initial_row);
     void change_current_player(bool white);
     Player get_current_player();
     void update_board(int col_i, int row_i, int col_f, int row_f);
