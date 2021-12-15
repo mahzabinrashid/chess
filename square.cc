@@ -29,3 +29,4 @@ void Square::set_col(int theCol) {
 }
 
 Square::~Square() {};
+

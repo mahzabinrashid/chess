@@ -5,6 +5,7 @@
 #include <vector>
 #include "square.h"
 #include "player.h"
+#include "window.h"
 class Square;
 
 using namespace std;
@@ -13,12 +14,14 @@ class Board {
     vector<vector<Square>> board;
     vector<Player> players;
     Player current_player{true, true, 0};
+    Xwindow w; 
     public:
     bool becomes_check;
     // methods
     void empty_board(); // allocates memory for the empty board
     void initialise_players(bool p1_human, bool p2_human, int p1_level, int p2_level); // initialising the 2 players
     void update_board(int col_i, int row_i, int col_f, int row_f);
+    void graphic_print(); // displays graphical interface
 
     // setup methods
     void put_piece(string piece, int final_col, int final_row); // +

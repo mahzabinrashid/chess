@@ -29,7 +29,6 @@ string board_coordinates(int col, int row) {
   return horizontal + vertical;
 }
 
-// move this func to addtext
 void print(vector <vector<Square>> board) {
   string name;
   for (std::size_t i = board.size(); i > 0; --i) {
@@ -47,6 +46,25 @@ void print(vector <vector<Square>> board) {
     }
     cout << endl;
   }
+}
+
+void Board::graphic_print() {
+    string name;
+    for (std::size_t i = 0; i < board.size(); ++i) {
+        for (std::size_t j = 0; j < board[i].size(); ++j) {  
+            w.fillRectangle(j*30, (board[i].size() - i - 1)*30, 30, 30, 0); 
+            name = board[i][j].get_piece()->get_name();
+            if (name == "empty") {
+                if (board[i][j].get_piece()->is_white() == true) {
+                    w.drawString(j*30, (board[i].size() - i)*30, " ");    
+                } else {
+                    w.drawString(j*30, (board[i].size() - i)*30, "-");    
+                }
+            } else {
+                w.drawString(j*30, (board[i].size() - i)*30, name);    
+            } 
+        }
+    }  
 }
 
 // methods
@@ -86,6 +104,7 @@ void Board::update_board(int col_i, int row_i, int col_f, int row_f) {
     current_player = players[0];
   }
   print(board);
+  graphic_print();
 }
 
 // setup methods
@@ -99,6 +118,7 @@ void Board::put_piece(string piece, int final_col, int final_row) {
   delete board[final_row][final_col].get_piece();
   board[final_row][final_col] = Square(final_row, final_col, new Piece(piece, wp));
   print(board);
+  graphic_print();
 }
 
 void Board::delete_piece(int col_f, int row_f) {
@@ -109,6 +129,7 @@ void Board::delete_piece(int col_f, int row_f) {
     board[row_f][col_f].set_piece(new Piece("empty", true));
   }
   print(board);
+  graphic_print();
 }
 
 void Board::change_current_player(bool white) {
@@ -122,6 +143,7 @@ void Board::setup_board() {
   players.emplace_back(Player(false, true, 0));
   current_player = players[0];
   print(board);
+  graphic_print();
 }
 
 bool Board::valid_setup() {
@@ -191,6 +213,7 @@ void Board::default_board() {
     board[1][i] = Square(6, i, new Piece("P", true));
   }
   print(board);
+  graphic_print();
 }
 
 // getters and settors
@@ -545,7 +568,7 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
   if (name == "Q") {
     vector < string > queen_r = valid_moves("R", col_i, row_i, col_f, row_f);
     vector < string > queen_b = valid_moves("B", col_i, row_i, col_f, row_f);
-    for (int i = 0; i < queen_r.size(); ++i) {
+    for (std::size_t i = 0; i < queen_r.size(); ++i) {
       moves.emplace_back(queen_r[i]);
     }
     for (std::size_t i = 0; i < queen_b.size(); ++i) {
@@ -556,7 +579,7 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
   if (name == "q") {
     vector < string > queen_r = valid_moves("r", col_i, row_i, col_f, row_f);
     vector < string > queen_b = valid_moves("b", col_i, row_i, col_f, row_f);
-    for (int i = 0; i < queen_r.size(); ++i) {
+    for (std::size_t i = 0; i < queen_r.size(); ++i) {
       moves.emplace_back(queen_r[i]);
     }
     for (std::size_t i = 0; i < queen_b.size(); ++i) {
@@ -674,7 +697,7 @@ bool Board::is_valid(int col_i, int row_i, int col_f, int row_f) {
   string notation_f = board_coordinates(col_f, row_f);
   vector < string > possible_moves = valid_moves(object, col_i, row_i, col_f, row_f);
   if (object != "k" && object != "K") {
-    for (int i = 0; i < possible_moves.size(); ++i) {
+    for (std::size_t i = 0; i < possible_moves.size(); ++i) {
       if (notation_f == possible_moves[i]) {
         return true;
       }
@@ -769,13 +792,13 @@ bool Board::is_check(bool white) {
             } else if (board[i][j].get_piece()->is_white() != white) {
                 string temp = board[i][j].get_piece()->get_name();
                 vector <string> temp_moves = valid_moves(temp, j, i, j, i);
-                for (int k = 0; k < temp_moves.size(); k++) {
+                for (std::size_t k = 0; k < temp_moves.size(); k++) {
                     all_moves.emplace_back(temp_moves[k]);
                 }
             }
         }
     }
-    for (int i = 0; i < all_moves.size(); i++) {
+    for (std::size_t i = 0; i < all_moves.size(); i++) {
         if (king_pos == all_moves[i]) {
             return true;
         }
@@ -791,13 +814,13 @@ bool Board::will_be_check(string name, bool white, string final_pos) {
       if (board[i][j].get_piece() -> is_white() != white) {
         string temp_name = board[i][j].get_piece() -> get_name();
         vector < string > temp = valid_moves(temp_name, j, i, j, i);
-        for (int k = 0; k < temp.size(); ++k) {
+        for (std::size_t k = 0; k < temp.size(); ++k) {
           opponent_moves.emplace_back(temp[k]);
         }
       }
     }
   }
-  for (int i = 0; i < opponent_moves.size(); ++i) {
+  for (std::size_t i = 0; i < opponent_moves.size(); ++i) {
     if (final_pos == opponent_moves[i]) {
       return true;
     }
@@ -856,12 +879,12 @@ bool Board::is_stalemate(bool white) {
                     string temp_name = board[i][j].get_piece() -> get_name();
                     if (temp_name == "K") {
                         vector < string > temp = valid_moves(temp_name, j, i, j, i);
-                        for (int k = 0; k < temp.size(); k++) {
+                        for (std::size_t k = 0; k < temp.size(); k++) {
                             king_moves.emplace_back(temp[k]);
                         }
                     } else {
                         vector < string > temp = valid_moves(temp_name, j, i, j, i);
-                        for (int k = 0; k < temp.size(); ++k) {
+                        for (std::size_t k = 0; k < temp.size(); ++k) {
                             all_moves.emplace_back(temp[k]);                          
                         }
                     }
@@ -870,7 +893,7 @@ bool Board::is_stalemate(bool white) {
         }
         int count = 0;
         if (all_moves.size() == 0) {
-            for (int i = 0; i < king_moves.size(); i++) {
+            for (std::size_t i = 0; i < king_moves.size(); i++) {
                 cout << king_moves[i] << endl;
                 if (!(will_be_check("K", true, king_moves[i]))) {
                     count++;
@@ -893,12 +916,12 @@ bool Board::is_stalemate(bool white) {
                     string temp_name = board[i][j].get_piece() -> get_name();
                     if (temp_name == "k") {
                         vector < string > temp = valid_moves(temp_name, j, i, j, i);
-                        for (int k = 0; k < temp.size(); k++) {
+                        for (std::size_t k = 0; k < temp.size(); k++) {
                             king_moves.emplace_back(temp[k]);
                         }
                     } else {
                         vector < string > temp = valid_moves(temp_name, j, i, j, i);
-                        for (int k = 0; k < temp.size(); ++k) {
+                        for (std::size_t k = 0; k < temp.size(); ++k) {
                             all_moves.emplace_back(temp[k]);
                         }
                     }
@@ -907,7 +930,7 @@ bool Board::is_stalemate(bool white) {
         }
         int count = 0;
         if (all_moves.size() == 0) {
-            for (int i = 0; i < king_moves.size(); i++) {
+            for (std::size_t i = 0; i < king_moves.size(); i++) {
                 if (!(will_be_check("k", true, king_moves[i]))) {
                     count++;
                 }
