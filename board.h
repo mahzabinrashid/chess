@@ -60,6 +60,9 @@ class Board {
     bool black_pawn_promotion(int col_i, int row_i);
     void replace_pawn(string piece, bool white,int col_f, int row_f);
 
+    // level 1
+    void level_1(bool white);
+
     ~Board(); //destructor
 };
 
