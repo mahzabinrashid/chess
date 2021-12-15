@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 {"buildTargets":[".PHONY","board.o","chess","clean","main.o","make.exe","piece.o","player.o","square.o"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
-=======
-{"buildTargets":[".PHONY","board.o","chess","clean","et","main.o","make.exe","piece.h","piece.o","player.o","square.o"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
->>>>>>> 30671a947b6f917ce1054fe3f8312b642f9d647a
