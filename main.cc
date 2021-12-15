@@ -33,7 +33,7 @@ int main() {
   bool setup = false;
   bool manual_setup = false;
   bool not_custom_b = true;
-  bool wp;
+  bool wp = true;
 
   // scoreboard
   float score_w = 0;
@@ -192,8 +192,7 @@ int main() {
         }
       } else {
         cout << "Start a new game before making a move." << endl;
-      }
-      
+      }  
     } else if (command == "resign") {
       if (b.get_current_player().is_white() == true) {
         score_b++;
