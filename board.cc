@@ -938,7 +938,6 @@ void Board::replace_pawn(string piece, bool white,int col_f, int row_f) {
 void Board::level_1(bool white) {
     /* initialize random seed: */ 
     // taken from https://www.cplusplus.com/reference/cstdlib/rand/
-    srand (time(NULL));
     vector <Square> pieces;
     for (std::size_t i = board.size(); i > 0; --i) {
       for (std::size_t j = 0; j < board[i - 1].size(); ++j) {
@@ -950,13 +949,28 @@ void Board::level_1(bool white) {
           }
       }
     }
-    
+    srand (time(NULL));
     int x = rand() % 16;
     Square s = pieces[x];
     vector <string> available_moves = valid_moves(s.get_piece()->get_name(), s.get_col(), s.get_row(), 0, 0);
-    int y = rand() % available_moves.size();
-    int row = available_moves[y][1] - '0' - 1;
-    update_board(s.get_row(), s.get_col(), row, get_colm_int(available_moves[y][0])); 
+
+    while (available_moves.size() == 0) {
+        srand (time(NULL));
+        int x = rand() % 16;
+        Square s = pieces[x];
+        available_moves = valid_moves(s.get_piece()->get_name(), s.get_col(), s.get_row(), 0, 0);
+        if (available_moves.size() != 0) {
+            break;
+        }
+    }
+
+        srand (time(NULL));
+        int y = rand() % available_moves.size();
+        int row = available_moves[y][1] - '0' - 1;
+        int col = get_colm_int(available_moves[y][0]);
+        update_board(s.get_col(), s.get_row(), col, row);   
+    
+ 
 }
 
 // destructor
