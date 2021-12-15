@@ -81,7 +81,7 @@ int main() {
         } else {
           wp = false;
         }
-        b.set_current_player(wp);
+        b.change_current_player(wp);
       } else {
         cout << "Enter setup mode by typing 'setup' to enter setup mode before using this command." << endl;
       }

@@ -25,6 +25,7 @@ class Board {
     void delete_piece(int final_col, int final_row); // -
     void setup_board(); // sets up an empty board and prints the board, initialises the 2 players and
     bool valid_setup(); // checks if the setup is valid
+    void change_current_player(bool white);
 
     // default game methods
     void default_board();

@@ -111,6 +111,10 @@ void Board::delete_piece(int col_f, int row_f) {
   print(board);
 }
 
+void Board::change_current_player(bool white) {
+    current_player.set_white(white);
+}
+
 void Board::setup_board() {
   empty_board();
   // initialising the 2 players
