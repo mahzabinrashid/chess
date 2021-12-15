@@ -3,6 +3,9 @@
 #include <string>
 #include <sstream>
 #include "board.h"
+#include <stdio.h>      
+#include <stdlib.h>  
+#include <cstdlib>
 
 using namespace std;
 
@@ -21,6 +24,7 @@ int get_col_int(char row_char) {
 }
 
 int main() {
+  cout << rand() << endl;
   Board b;
 
   // player initialisation
@@ -128,9 +132,8 @@ int main() {
       } else {
         cout << "Invalid players." << endl;
       }  
-    } else if (command == "move") {
+    } else if (command == "move") { 
       if (b.get_current_player().is_human() == 0) {
-        cout << "compsturn";
         b.level_1(b.get_current_player().is_white());
       } else {
         if (game_called) {
@@ -197,7 +200,7 @@ int main() {
       } else {
         cout << "Start a new game before making a move." << endl;
       }  
-      }
+    }
     } else if (command == "resign") {
       if (b.get_current_player().is_white() == true) {
         score_b++;
