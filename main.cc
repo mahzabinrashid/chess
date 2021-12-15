@@ -77,10 +77,14 @@ int main() {
                 cout << "Enter setup mode by typing 'setup' to enter setup mode before using this command." << endl; 
             }
         } else if (command == "done") {
-            if (b.valid_setup()) {
-                cout << "Setup successfully completed. Now you can start a game." << endl;
+            if (setup == true) {
+                if (b.valid_setup()) {
+                    cout << "Setup successfully completed. Now you can start a game." << endl;
+                } else {
+                    cout << "Please ensure you meet the criteria for a valid setup." << endl;
+                }
             } else {
-                cout << "Please ensure you meet the criteria for a valid setup." << endl;
+                cout << "Enter setup mode by typing 'setup' to enter setup mode before using this command." << endl; 
             }
         } else if (command == "game") {   
             string player_1, player_2;
@@ -149,10 +153,13 @@ int main() {
             } else {
                 score_w++;
             }
+        } else if (command == "exit") {
+            break;
+
         } else {
             cout << "Command not found." << endl;
         }
-    }
+    } 
     cout << "Final Score:" << endl;
     cout << "White:" << score_w << endl;
     cout << "Black:" << score_b << endl;    
