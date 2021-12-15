@@ -3,6 +3,7 @@
 #include <string>
 #include <sstream>
 #include "board.h"
+#include <stdio.h>      
 
 using namespace std;
 
@@ -33,10 +34,11 @@ int main() {
   bool setup = false;
   bool manual_setup = false;
   bool not_custom_b = true;
+  bool wp = true;
 
   // scoreboard
-  int score_w = 0;
-  int score_b = 0;
+  float score_w = 0;
+  float score_b = 0;
 
   // new game started before calling move
   bool game_called = false;
@@ -77,14 +79,13 @@ int main() {
     } else if (command == "=") { 
       if (setup == true) {
         string colour;
-        bool wp;
+        
         cin >> colour;
         if (colour == "white") {
           wp = true;
         } else {
           wp = false;
         }
-        b.change_current_player(wp);
       } else {
         cout << "Enter setup mode by typing 'setup' to enter setup mode before using this command." << endl;
       }
@@ -122,13 +123,17 @@ int main() {
         } else {
           cout << "Play your move." << endl;
           b.initialise_players(p1_human, p2_human, p1_level, p2_level);
+          b.change_current_player(wp);
         }
 
       } else {
         cout << "Invalid players." << endl;
       }  
-    } else if (command == "move") {
-      if (game_called) {
+    } else if (command == "move") { 
+      if (b.get_current_player().is_human() == 0) {
+        b.level_1(b.get_current_player().is_white());
+      } else {
+        if (game_called) {
         char read_initial_col, read_final_col;
       int read_initial_row, read_final_row, initial_row, final_row, initial_col, final_col;
       cin >> read_initial_col >> read_initial_row >> read_final_col >> read_final_row;
@@ -138,15 +143,13 @@ int main() {
       initial_row = read_initial_row - 1;
       final_row = read_final_row - 1;
 
-      /*string piece;
-      if (b.get_current_player().is_white() && (b.white_pawn_promotion(initial_col, initial_row, final_col, final_row))) {
-          cin >> piece;
-          b.replace_pawn(piece, final_col, final_row);     
+      string piece;
+      if (b.get_current_player().is_white() == true && b.white_pawn_promotion(initial_col, initial_row)) {
+          cin >> piece;     
       }
-      if ((b.get_current_player().is_white() == false) && (b.black_pawn_promotion(initial_col, initial_row, final_col, final_row))) {
-          cin >> piece;
-          b.replace_pawn(piece, final_col, final_row);  
-      }*/
+      if (b.get_current_player().is_white() == false && b.black_pawn_promotion(initial_col, initial_row)) {
+          cin >> piece; 
+      }
       
       if (!(b.correct_command(read_initial_col, read_initial_row, read_final_col, read_final_row))) {
         cout << "Incorrect position" << endl;
@@ -159,27 +162,48 @@ int main() {
       } else if (!(b.is_valid(initial_col, initial_row, final_col, final_row)) && b.becomes_check == true) {
         cout << "Cannot move King, will be in check" << endl;
       } else {
+        if (b.w_pawn_promotion == true) {
+          bool white = true;
+          b.replace_pawn(piece, white, initial_col, initial_row);
+          b.w_pawn_promotion = false;
+        } else if (b.b_pawn_promotion == true) {
+          bool white = false;
+          b.replace_pawn(piece, white, initial_col, initial_row);
+          b.b_pawn_promotion = false;
+        }
         b.update_board(initial_col, initial_row, final_col, final_row);
         bool white = b.get_current_player().is_white();
-        if (b.is_stalemate(white)) {
+        if (b.is_check(white)) {
+            if (b.is_checkmate(white)) {
+              if (white == true) {
+                cout << "Checkmate! Black Wins" << endl;
+                score_b += 1;
+              } else {
+                cout << "Checkmate! White Wins" << endl;
+                score_w += 1;
+              }
+              game_called = false;
+              Board c;
+              b = c;
+              cout << "Start a new game." << endl;
+            } else {
+                cout << "You are in check" << endl;
+                }
+          } else if (b.is_stalemate(white)) {
           cout << "Stalemate!" << endl;
           cout << "Start a new game." << endl;
           score_w += 0.5;
           score_b += 0.5;
           game_called = false;
-        } else if (b.is_check(white)) {
-            if (b.is_checkmate(final_col, final_row)) {
-                cout << "Checkmate!" << endl;
-                return 0;
-            } else {
-                cout << "You are in check" << endl;
-                }
-            }
+          Board c;
+          b = c;
+          cout << "Start a new game." << endl;
+        }
         }
       } else {
         cout << "Start a new game before making a move." << endl;
-      }
-      
+      }  
+    }
     } else if (command == "resign") {
       if (b.get_current_player().is_white() == true) {
         score_b++;
@@ -187,6 +211,8 @@ int main() {
         score_w++;
       }
       game_called = false;
+      Board c;
+      b = c;
       cout << "Start a new game." << endl;
     } else if (command == "exit") {
       break;
