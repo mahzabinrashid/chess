@@ -177,7 +177,7 @@ int main() {
                 cout << "Checkmate! White Wins" << endl;
                 score_w += 1;
               }
-              return 0;
+              game_called = false;
             } else {
                 cout << "You are in check" << endl;
                 }
