@@ -956,7 +956,7 @@ void Board::level_1(bool white) {
     vector <string> available_moves = valid_moves(s.get_piece()->get_name(), s.get_col(), s.get_row(), 0, 0);
     int y = rand() % available_moves.size();
     int row = available_moves[y][1] - '0' - 1;
-    update_board(s.get_row(), s.get_col(), row, get_colm_int(available_moves[y][0])); 
+    update_board(s.get_row(), s.get_col(), row, get_colm_int(available_moves[y][0]), row); 
 }
 
 // destructor
