@@ -814,7 +814,7 @@ bool Board::will_be_check(string name, bool white, string final_pos) {
 
 // checkmate
 // requires the final position of the piece moved
-bool Board::is_checkmate(int col, int row) {
+/*bool Board::is_checkmate(int col, int row) {
   bool white = board[row][col].get_piece() -> is_white();
   string name;
   if (white == true) {
@@ -844,6 +844,35 @@ bool Board::is_checkmate(int col, int row) {
   for (int i = 0; i < count; i++) {
     if (will_be_check(name, color, possible_moves[i])) {
       count--;
+    }
+  }
+  if (count == 0) {
+    return true;
+  } else {
+    return false;
+  }
+}*/
+bool Board::is_checkmate(bool white) {
+  string king_pos;
+  string king;
+  vector <string> king_moves;
+  if (white == true) {
+      king = "K";
+  } else {
+      king = "k";
+  }
+  for (int i = 0; i < 8; i++) {
+    for (int j = 0; j < 8; j++) {
+      if (board[i][j].get_piece()->get_name() == king) {
+          king_pos = board_coordinates(j,i);
+          king_moves = valid_moves(king, j, i, j, i);
+      }
+    }
+  }
+  int count = 0;
+  for (int i = 0; i < king_moves.size(); i++) {
+    if (!(will_be_check(king, white, king_moves[i]))) {
+      count++;
     }
   }
   if (count == 0) {
