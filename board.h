@@ -44,7 +44,7 @@ class Board {
 
     
     // check
-    bool is_check(bool check); // checks if the king is in check after a piece has been moved
+    bool is_check(bool white); // checks if the king is in check after a piece has been moved
     bool will_be_check(string name, bool white, string final_pos); // checks if the king will be in check after being moved
 
     // checkmate
