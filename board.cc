@@ -5,6 +5,8 @@
 #include <vector>
 #include <stdio.h>      
 #include <stdlib.h>     
+#include <time.h>    
+
 
 using namespace std;
 
@@ -105,7 +107,10 @@ void Board::update_board(int col_i, int row_i, int col_f, int row_f) {
 
 // setup methods
 void Board::put_piece(string piece, int final_col, int final_row) {
-  bool wp;
+ if (((piece == "P") && (final_row == 7)) || ((piece == "p") && (final_row == 0))) {
+     cout << "No pawns allowed here" << endl;
+ } else {
+       bool wp;
   if (isupper(piece[0])) {
     wp = true;
   } else {
@@ -114,6 +119,7 @@ void Board::put_piece(string piece, int final_col, int final_row) {
   delete board[final_row][final_col].get_piece();
   board[final_row][final_col] = Square(final_row, final_col, new Piece(piece, wp));
   print(board);
+ }
 }
 
 void Board::delete_piece(int col_f, int row_f) {
@@ -159,6 +165,7 @@ bool Board::valid_setup() {
   } else {
     valid = false;
   }
+
   // no kings are in check
   if (is_check(true) || is_check(false)) {
     valid = false;
@@ -748,37 +755,6 @@ bool Board::empty_square(int initial_col, int initial_row) {
 }
 
 // check
-// so far sees if there is a check after a piece has been moves by the opponent
-/*bool Board::is_check(int col_i, int row_i, int col_f, int row_f) {
-  string object = board[row_f][col_f].get_piece() -> get_name();
-  vector < string > possible_moves = valid_moves(object, col_f, row_f, col_i, row_i);
-  bool white = board[row_f][col_f].get_piece() -> is_white();
-  string king;
-  if (white == true) {
-    king = "k";
-  } else {
-    king = "K";
-  }
-  int king_row;
-  int king_col;
-  for (int i = 0; i < 8; ++i) {
-    for (int j = 0; j < 8; j++) {
-      string temp = board[i][j].get_piece() -> get_name();
-      if (temp == king) {
-        king_row = i;
-        king_col = j;
-        break;
-      }
-    }
-  }
-  string king_pos = board_coordinates(king_col, king_row);
-  for (int i = 0; i < possible_moves.size(); ++i) {
-    if (king_pos == possible_moves[i]) {
-      return true;
-    }
-  }
-  return false;
-}*/
 bool Board::is_check(bool white) {
     string king_pos;
     string king;
@@ -833,44 +809,6 @@ bool Board::will_be_check(string name, bool white, string final_pos) {
 
 // checkmate
 // requires the final position of the piece moved
-/*bool Board::is_checkmate(int col, int row) {
-  bool white = board[row][col].get_piece() -> is_white();
-  string name;
-  if (white == true) {
-    name = "k";
-  } else {
-    name = "K";
-  }
-  bool color;
-  if (name == "k") {
-    color = false;
-  } else {
-    color = true;
-  }
-  int king_row;
-  int king_col;
-  for (int i = 0; i < 8; i++) {
-    for (int j = 0; j < 8; j++) {
-      if (board[i][j].get_piece() -> get_name() == name) {
-        king_row = i;
-        king_col = j;
-        break;
-      }
-    }
-  }
-  vector < string > possible_moves = valid_moves(name, king_col, king_row, king_col, king_row);
-  int count = possible_moves.size();
-  for (int i = 0; i < count; i++) {
-    if (will_be_check(name, color, possible_moves[i])) {
-      count--;
-    }
-  }
-  if (count == 0) {
-    return true;
-  } else {
-    return false;
-  }
-}*/
 bool Board::is_checkmate(bool white) {
   string king_pos;
   string king;
@@ -976,6 +914,7 @@ bool Board::is_stalemate(bool white) {
         }
     }
 }
+
 // pawn promotion
 bool Board::white_pawn_promotion(int col_i, int row_i) {
     if (row_i == 6) {
@@ -1002,24 +941,44 @@ void Board::replace_pawn(string piece, bool white,int col_f, int row_f) {
 
 // ai
 void Board::level_1(bool white) {
+    /* initialize random seed: */ 
+    // taken from https://www.cplusplus.com/reference/cstdlib/rand/
     vector <Square> pieces;
+    int count = 0;
     for (std::size_t i = board.size(); i > 0; --i) {
       for (std::size_t j = 0; j < board[i - 1].size(); ++j) {
           if (white && (board[i - 1][j].get_piece()->is_white()) && (board[i - 1][j].get_piece()->get_name() != "empty")) {
               pieces.push_back(board[i - 1][j]);
+              count++;
           }
           if (!white && !(board[i - 1][j].get_piece()->is_white()) && (board[i - 1][j].get_piece()->get_name() != "empty")) {
               pieces.push_back(board[i - 1][j]);
+              count++;
           }
       }
     }
-    int x = rand() % 17;
+    srand (time(NULL));
+    int x = rand() % count;
     Square s = pieces[x];
     vector <string> available_moves = valid_moves(s.get_piece()->get_name(), s.get_col(), s.get_row(), 0, 0);
-    int y = rand() % (available_moves.size() + 1);
-    int row = available_moves[y][1] - '0' - 1;
-    cout << s.get_col() << s.get_row() <<  get_colm_int(available_moves[y][0]) << row << endl;
-    update_board(s.get_col(), s.get_row(), get_colm_int(available_moves[y][0]), row);
+
+    while (available_moves.size() == 0) {
+        srand (time(NULL));
+        int x = rand() % 16;
+        s = pieces[x];
+        available_moves = valid_moves(s.get_piece()->get_name(), s.get_col(), s.get_row(), 0, 0);
+        if (available_moves.size() != 0) {
+            break;
+        }
+    }
+
+        srand (time(NULL));
+        int y = rand() % available_moves.size();
+        int row = available_moves[y][1] - '0' - 1;
+        int col = get_colm_int(available_moves[y][0]);
+        update_board(s.get_col(), s.get_row(), col, row);   
+    
+ 
 }
 
 // destructor

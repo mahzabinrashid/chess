@@ -3,6 +3,7 @@
 #include <string>
 #include <sstream>
 #include "board.h"
+#include <stdio.h>      
 
 using namespace std;
 
@@ -128,9 +129,8 @@ int main() {
       } else {
         cout << "Invalid players." << endl;
       }  
-    } else if (command == "move") {
+    } else if (command == "move") { 
       if (b.get_current_player().is_human() == 0) {
-        cout << "compsturn";
         b.level_1(b.get_current_player().is_white());
       } else {
         if (game_called) {
@@ -183,6 +183,7 @@ int main() {
                 score_w += 1;
               }
               game_called = false;
+              cout << "Start a new game." << endl;
             } else {
                 cout << "You are in check" << endl;
                 }
@@ -192,12 +193,13 @@ int main() {
           score_w += 0.5;
           score_b += 0.5;
           game_called = false;
+          cout << "Start a new game." << endl;
         }
         }
       } else {
         cout << "Start a new game before making a move." << endl;
       }  
-      }
+    }
     } else if (command == "resign") {
       if (b.get_current_player().is_white() == true) {
         score_b++;
@@ -206,6 +208,8 @@ int main() {
       }
       game_called = false;
       cout << "Start a new game." << endl;
+      Board c;
+      b = c;
     } else if (command == "exit") {
       break;
     } else {
