@@ -107,7 +107,10 @@ void Board::update_board(int col_i, int row_i, int col_f, int row_f) {
 
 // setup methods
 void Board::put_piece(string piece, int final_col, int final_row) {
-  bool wp;
+ if (((piece == "P") && (final_row == 7)) || ((piece == "p") && (final_row == 0))) {
+     cout << "No pawns allowed here" << endl;
+ } else {
+       bool wp;
   if (isupper(piece[0])) {
     wp = true;
   } else {
@@ -116,6 +119,7 @@ void Board::put_piece(string piece, int final_col, int final_row) {
   delete board[final_row][final_col].get_piece();
   board[final_row][final_col] = Square(final_row, final_col, new Piece(piece, wp));
   print(board);
+ }
 }
 
 void Board::delete_piece(int col_f, int row_f) {
@@ -161,6 +165,7 @@ bool Board::valid_setup() {
   } else {
     valid = false;
   }
+
   // no kings are in check
   if (is_check(true) || is_check(false)) {
     valid = false;
