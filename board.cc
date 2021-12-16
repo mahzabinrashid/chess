@@ -267,7 +267,7 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
       }
     }
     // checks if pawn can move forward two steps from the starting position
-    if (row_i == 1 && board[row_i + 2][col_i].get_piece() -> get_name() == "empty") {
+    if (row_i == 1 && board[row_i + 2][col_i].get_piece() -> get_name() == "empty" && board[row_i + 1][col_i].get_piece() -> get_name() == "empty") {
       moves.emplace_back(board_coordinates(col_i, row_i + 2));
     }
     // capturing using pawn
@@ -293,7 +293,7 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
       }
     }
     // checks if pawn can move forward two steps from the starting position
-    if (row_i == 6 && board[row_i - 2][col_i].get_piece() -> get_name() == "empty") {
+    if (row_i == 6 && board[row_i - 2][col_i].get_piece() -> get_name() == "empty" && board[row_i - 1][col_i].get_piece() -> get_name() == "empty") {
       moves.emplace_back(board_coordinates(col_i, row_i - 2));
     }
     // capturing using pawn
@@ -969,18 +969,21 @@ void Board::level_1(bool white) {
     /* initialize random seed: */ 
     // taken from https://www.cplusplus.com/reference/cstdlib/rand/
     vector <Square> pieces;
+    int count = 0;
     for (std::size_t i = board.size(); i > 0; --i) {
       for (std::size_t j = 0; j < board[i - 1].size(); ++j) {
           if (white && (board[i - 1][j].get_piece()->is_white()) && (board[i - 1][j].get_piece()->get_name() != "empty")) {
               pieces.push_back(board[i - 1][j]);
+              count++;
           }
           if (!white && !(board[i - 1][j].get_piece()->is_white()) && (board[i - 1][j].get_piece()->get_name() != "empty")) {
               pieces.push_back(board[i - 1][j]);
+              count++;
           }
       }
     }
     srand (time(NULL));
-    int x = rand() % 16;
+    int x = rand() % count;
     Square s = pieces[x];
     vector <string> available_moves = valid_moves(s.get_piece()->get_name(), s.get_col(), s.get_row(), 0, 0);
 
