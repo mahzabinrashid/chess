@@ -962,7 +962,7 @@ void Board::level_1(bool white) {
     while (available_moves.size() == 0) {
         srand (time(NULL));
         int x = rand() % 16;
-        Square s = pieces[x];
+        s = pieces[x];
         available_moves = valid_moves(s.get_piece()->get_name(), s.get_col(), s.get_row(), 0, 0);
         if (available_moves.size() != 0) {
             break;
