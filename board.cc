@@ -236,7 +236,7 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
       }
     }
     // checks if pawn can move forward two steps from the starting position
-    if (row_i == 1 && board[row_i + 2][col_i].get_piece() -> get_name() == "empty") {
+    if (row_i == 1 && board[row_i + 2][col_i].get_piece() -> get_name() == "empty" && board[row_i + 1][col_i].get_piece() -> get_name() == "empty") {
       moves.emplace_back(board_coordinates(col_i, row_i + 2));
     }
     // capturing using pawn
@@ -262,7 +262,7 @@ vector < string > Board::valid_moves(string name, int col_i, int row_i, int col_
       }
     }
     // checks if pawn can move forward two steps from the starting position
-    if (row_i == 6 && board[row_i - 2][col_i].get_piece() -> get_name() == "empty") {
+    if (row_i == 6 && board[row_i - 2][col_i].get_piece() -> get_name() == "empty" && board[row_i - 1][col_i].get_piece() -> get_name() == "empty") {
       moves.emplace_back(board_coordinates(col_i, row_i - 2));
     }
     // capturing using pawn
