@@ -944,18 +944,21 @@ void Board::level_1(bool white) {
     /* initialize random seed: */ 
     // taken from https://www.cplusplus.com/reference/cstdlib/rand/
     vector <Square> pieces;
+    int count = 0;
     for (std::size_t i = board.size(); i > 0; --i) {
       for (std::size_t j = 0; j < board[i - 1].size(); ++j) {
           if (white && (board[i - 1][j].get_piece()->is_white()) && (board[i - 1][j].get_piece()->get_name() != "empty")) {
               pieces.push_back(board[i - 1][j]);
+              count++;
           }
           if (!white && !(board[i - 1][j].get_piece()->is_white()) && (board[i - 1][j].get_piece()->get_name() != "empty")) {
               pieces.push_back(board[i - 1][j]);
+              count++;
           }
       }
     }
     srand (time(NULL));
-    int x = rand() % 16;
+    int x = rand() % count;
     Square s = pieces[x];
     vector <string> available_moves = valid_moves(s.get_piece()->get_name(), s.get_col(), s.get_row(), 0, 0);
 
