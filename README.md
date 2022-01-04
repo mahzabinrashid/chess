@@ -11,8 +11,8 @@ Our team developed this chess engine for our CS246 Final Project (Fall 2021)
 
 The chess game provides different functionalities from the assignment specification:
 
-- Graphical interface using X11
-- 1 levels of difficulty for the computer AI
+- Graphical interface using the XWindow Library
+- 1 level of difficulty for the computer AI
 - Setup Mode
 - Play Modes of
   - Player vs Player
