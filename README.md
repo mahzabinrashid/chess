@@ -47,21 +47,7 @@ The chess game provides different functionalities from the assignment specificat
   - <i>= colour</i> makes it colour’s turn to go next(ex. <i>= white</i>)
   - <i>done</i> leaves setup mode
 
-
-For more detailed instructions:
-<a href="docs/chess.pdf">
-Instructions
-</a>
-
 ## Design & Planning
 
-We used Observer pattern as a design recipe for the game.
-
-For how our team tackled the project: <a href="docs/plan.pdf">Plan</a>
-
-<div>
-  <img alt="UML" src="images/uml.png" />
-  In pdf: <a href="uml.pdf">UML Class Diagram</a>
-</div>
-
-<br>
+For how our team tackled the project: <a href="plan.pdf">Plan</a>
+For our UML: <a href="uml.pdf">Plan</a>
