@@ -208,8 +208,6 @@ int main() {
       }
       game_called = false;
       cout << "Start a new game." << endl;
-      Board c;
-      b = c;
     } else if (command == "exit") {
       break;
     } else {

@@ -1,0 +1,9 @@
+setup
++ k g8
++ q g3
++ r f3
++ K h1
+= black
+done
+game human human
+move f3 f1

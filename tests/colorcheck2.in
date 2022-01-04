@@ -1,0 +1,13 @@
+setup
++ k f8
++ p b7
++ K h1
++ P a2
+= black
+= white
+= black
+done
+game human human
+move h1 h2
+move a2 a4
+move b7 b6

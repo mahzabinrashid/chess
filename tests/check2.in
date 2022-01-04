@@ -1,0 +1,9 @@
+setup
++ K g1
++ P g2
++ k g8
++ r d4
+= black
+done
+game human human
+move d4 d1

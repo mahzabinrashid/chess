@@ -1,0 +1,17 @@
+setup
++ k h8
++ p h7
++ p g7
++ r b6
++ r b5
++ q a5
++ p b4
++ p c4
++ b d4
++ n c3
++ n d3
++ R f1
++ K h1
+done
+game human human
+move f1 f8

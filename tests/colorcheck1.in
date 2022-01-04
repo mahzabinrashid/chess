@@ -1,0 +1,9 @@
+setup
++ k c7
++ K e5
++ P e4
++ p c6
+= black
+done
+game human human
+move c6 c5

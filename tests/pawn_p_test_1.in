@@ -1,0 +1,8 @@
+setup
++ p h2
++ k d4
++ K a3
+= black
+done
+game human human
+move h2 h1 q
