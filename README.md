@@ -49,6 +49,6 @@ The chess game provides different functionalities from the assignment specificat
 
 ## Design & Planning
 
-For how our team tackled the project: <a href="plan.pdf">Plan</a>
+For how our team tackled the project: <a href="design.pdf">Plan</a>
 <br>
 For our UML: <a href="uml.pdf">Plan</a>
