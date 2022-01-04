@@ -47,7 +47,6 @@ The chess game provides different functionalities from the assignment specificat
   - <i>= colour</i> makes it colour’s turn to go next(ex. <i>= white</i>)
   - <i>done</i> leaves setup mode
 
-- <i>history</i> for viewing your past moves
 
 For more detailed instructions:
 <a href="docs/chess.pdf">
