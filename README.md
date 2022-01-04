@@ -7,7 +7,7 @@ Chess Game
 
 Team Members : Inqiyad Patwary, Mahzabin Rashid Fariha, Sadman Ahmed
 
-Our team developed this chess engine for our cs246 Final Project (Fall 2021)
+Our team developed this chess engine for our CS246 Final Project (Fall 2021)
 
 The chess game provides different functionalities from the assignment specification:
 
